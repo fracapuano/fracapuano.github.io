@@ -1,0 +1,20 @@
+---
+layout: homepage
+---
+
+<div class="blog-container">
+  <h2>Blog</h2>
+  <div class="blog-posts">
+    {% assign all_posts = site.data.blog.posts | sort: 'date' | reverse %}
+    {% for post in all_posts %}
+    <div class="blog-post">
+      <h3>{{ post.title }}</h3>
+      <p class="post-date">{{ post.date }}</p>
+      <p class="post-excerpt">{{ post.excerpt }}</p>
+      {% if post.link %}
+      <a href="{{ post.link }}" class="read-more">Read more</a>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div> 

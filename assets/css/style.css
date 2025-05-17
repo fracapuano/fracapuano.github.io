@@ -1,0 +1,72 @@
+/* Modify avatar image size */
+.image.avatar img {
+  border-radius: 100%;
+  width: 200px; /* Increased from 100% to a fixed larger size */
+  padding: 20px;
+}
+
+#header .image.avatar {
+  margin: 0 0 1em 0;
+  width: 12.00em; /* Increased from 8.00em */
+}
+
+/* Reduce top spacing */
+header {
+  width: 350px; /* Increased further to accommodate the full name */
+  float: left;
+  position: fixed;
+  -webkit-font-smoothing: subpixel-antialiased;
+  padding-top: 1.5em; /* Reduced from 4.0em */
+  text-align: center;
+}
+
+/* Ensure name is on one line */
+header h1 {
+  font-size: 22px; /* Adjusted font size to fit better */
+  white-space: nowrap !important; /* Prevent line breaks with higher priority */
+  margin-bottom: 10px;
+  overflow: visible; /* Ensure text is not cut off */
+  display: inline-block; /* Help with centering and width */
+  max-width: 100%; /* Ensure it doesn't overflow the header */
+  word-break: keep-all !important; /* Additional property to prevent breaking */
+  hyphens: none !important; /* Disable hyphenation */
+}
+
+/* Adjust the wrapper width to accommodate the wider header */
+.wrapper {
+  width: 1000px; /* Increased from 960px */
+  margin: 0 auto;
+}
+
+section {
+  width: 650px;
+  float: right;
+  padding-top: 1.5em; /* Reduced from 4.0em */
+  padding-bottom: 50px;
+}
+
+/* Also update responsive styles for larger avatar */
+@media print, screen and (max-width: 960px) {
+  .image.avatar img {
+    border-radius: 100%;
+    width: 180px; /* Increased from 117px */
+    padding: 20px;
+  }
+  
+  /* Ensure name stays on one line in responsive view */
+  header {
+    width: auto;
+  }
+  
+  header h1 {
+    white-space: nowrap;
+  }
+}
+
+@media print, screen and (max-width: 480px) {
+  .image.avatar img {
+    border-radius: 100%;
+    width: 150px; /* Increased from 95px */
+    padding: 20px;
+  }
+} 

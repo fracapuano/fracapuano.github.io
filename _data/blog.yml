@@ -1,0 +1,30 @@
+posts:
+  - title: "Introduction to Machine Learning"
+    date: "June 15, 2023"
+    excerpt: "In this post, I discuss the fundamentals of machine learning and how to get started with your first ML project."
+    link: "#"
+    
+  - title: "Deep Learning for Computer Vision"
+    date: "August 20, 2023"
+    excerpt: "An exploration of how deep learning techniques are revolutionizing the field of computer vision."
+    link: "#"
+    
+  - title: "Natural Language Processing Techniques"
+    date: "October 5, 2023"
+    excerpt: "A deep dive into the latest NLP techniques and their applications in research."
+    link: "#"
+
+  - title: "My Journey in Academia"
+    date: "May 10, 2023"
+    excerpt: "Reflecting on my journey through academia and the lessons I've learned along the way."
+    link: "#"
+    
+  - title: "Book Recommendations for 2023"
+    date: "July 8, 2023"
+    excerpt: "A list of my favorite books I've read this year and why they've impacted me."
+    link: "#"
+    
+  - title: "Thoughts on Remote Research Collaboration"
+    date: "September 12, 2023"
+    excerpt: "My personal experiences with remote collaboration in research and how to make it effective."
+    link: "#" 
