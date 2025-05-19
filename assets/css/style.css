@@ -2,7 +2,7 @@
 .image.avatar img {
   border-radius: 100%;
   width: 200px; /* Increased from 100% to a fixed larger size */
-  padding: 20px;
+  padding: 10px;
 }
 
 #header .image.avatar {
@@ -16,8 +16,10 @@ header {
   float: left;
   position: fixed;
   -webkit-font-smoothing: subpixel-antialiased;
-  padding-top: 1.5em; /* Reduced from 4.0em */
+  padding-top: 0;
+  margin-top: 0;
   text-align: center;
+  top: 0;
 }
 
 /* Ensure name is on one line */
@@ -25,6 +27,7 @@ header h1 {
   font-size: 22px; /* Adjusted font size to fit better */
   white-space: nowrap !important; /* Prevent line breaks with higher priority */
   margin-bottom: 10px;
+  margin-top: 10px;
   overflow: visible; /* Ensure text is not cut off */
   display: inline-block; /* Help with centering and width */
   max-width: 100%; /* Ensure it doesn't overflow the header */
@@ -34,15 +37,28 @@ header h1 {
 
 /* Adjust the wrapper width to accommodate the wider header */
 .wrapper {
-  width: 1000px; /* Increased from 960px */
+  width: 1000px;
   margin: 0 auto;
+  padding: 0;
+}
+
+body {
+  padding: 0 !important;
+  margin: 0 !important;
 }
 
 section {
   width: 650px;
   float: right;
-  padding-top: 1.5em; /* Reduced from 4.0em */
+  padding-top: 0;
+  margin-top: 0;
   padding-bottom: 50px;
+}
+
+/* Navigation specific styling - updated v2 */
+section .navigation, .wrapper section .navigation {
+  margin: 2em 0 0 0; /* More reasonable spacing */
+  padding: 0;
 }
 
 /* Also update responsive styles for larger avatar */

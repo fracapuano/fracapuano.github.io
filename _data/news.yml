@@ -1,38 +1,41 @@
 - date: May 2025
-  content: Our paper on RL for High-Power Lasers control has been accepted to the main track at RLC'25. See you in Edmonton!
+  content: Our paper on RL for High-Power Lasers control has been accepted to the main track at <a href="https://rl-conference.cc/">RLC'25</a>. See you in Edmonton 🇨🇦!
 
 - date: April 2025
-  content: I am joining the Robotics team at Hugging Face to do research with Remi Cadene at LeRobot.
+  content: I am joining the robotics team at <a href="https://huggingface.co">Hugging Face</a> to do research with <a href="https://remicadene.com/">Remi Cadene</a> at LeRobot.
 
 - date: March 2025
-  content: I am heading to the ELLIS Winter School on Foundation Models in Amsterdam.
+  content: I am heading to the ELLIS Winter School on Foundation Models in Amsterdam. It's my first time in Amsterdam! <i>Check the <a href="http://localhost:4000/introduction/blog/2023/05/19/welcome-to-my-blog.html">blogpost</a>!</i>
 
 - date: January 2025
-  content: I joined Mistral AI (part-time), working with Sophia Yang on truly open-source European AI.
+  content: I joined <a href="https://mistral.ai">Mistral AI</a> working with <a href="https://www.linkedin.com/in/sophiamyang/">Sophia Yang</a> on open-source AI. Part-time while at MVA.
 
 - date: December 2024
-  content: Alongside Gabriele and Caleb, we won our 3rd hackathon in a row! We closed our hackathon season with a banger.
+  content: Alongside <a href="https://www.linkedin.com/in/gabrycina/">Gabriele</a> and <a href="https://www.linkedin.com/in/calebgucciardi">Caleb</a>, we won our 3rd hackathon in a row! We closed our hackathon season with a banger, check the <a href="http://fracapuano.github.io/introduction/blog/2023/05/19/welcome-to-my-blog.html">blogpost</a>!
 
 - date: September 2024
-  content: I started the MVA program (applied maths, Deep Learning) at ENS in Paris.
+  content: I started the <a href="https://www.master-mva.com">MVA program</a> (applied maths, Deep Learning) at ENS, in Paris 🇫🇷.
 
 - date: August 2024
-  content: I am heading to the 20th DLRL Summer School in Toronto (CA).
+  content: I am heading to the <a href="https://dlrl.ca/">20th DLRL Summer School</a> in Toronto. It's my first time in Canada 🇨🇦!
 
 - date: April 2024
-  content: I am leaving Bain and moving to Paris! I will be joining Alan working with the CTO, Charles Gorintin.
+  content: I am leaving Bain and moving to Paris! I will be joining <a href="https://alan.com">Alan</a> working with the CTO, <a href="https://www.linkedin.com/in/charles-gorintin/">Charles Gorintin</a>.
+
+- date: October 2023
+  content: After 2+ years, I got my blue belt in BJJ! 🥋🔵 <i>Check the <a href="http://localhost:4000/introduction/blog/2023/05/19/welcome-to-my-blog.html">blogpost</a>!</i>
 
 - date: July 2023
-  content: I have graduated from Politecnico di Torino, with a MSc thesis in Deep RL applied to Hardware-Aware Neural Architecture Search.
+  content: I have graduated from Politecnico di Torino, with a MSc thesis in Deep RL applied to Hardware-Aware Neural Architecture Search. Check the <a href="https://arxiv.org/abs/2504.00663">preprint</a>!
 
 - date: May 2023
-  content: I joined Bain & Company to work in their startup incubator as a ML Engineer.
+  content: I joined <a href="https://www.bain.com">Bain & Company</a> to work in their startup incubator as a ML Engineer 🌍.
 
 - date: April 2023
-  content: My paper on RL for Laser Systems has been accepted to SPIE 2023. I am heading out to Prague to present our work! <i>Edit&#58; we won the Best Student Paper Award! Thank you to all my coauthors</i>
+  content: "Our <a href='https://arxiv.org/abs/2304.12187'>paper on RL for Laser Systems</a> has been accepted to SPIE 2023. I am heading back to Prague to present our work! <i>Edit: we won the Best Student Paper Award!</i>"
 
 - date: October 2022
-  content: My first paper is out! Published in the proceedings of JaCoW 2022.
+  content: My first paper is out! Published in the proceedings of JaCoW 2022. Check the <a href="https://arxiv.org/pdf/2211.13351">preprint</a>!
 
 - date: July 2022
-  content: I am moving to Prague to join the ML team at ELI Beamlines, to work on ML methods in Laser-Wakefield Acceleration. 
+  content: I am moving to Prague, Czechia 🇨🇿, to join the ML team at <a href="https://www.eli-beams.eu">ELI Beamlines</a>, to work on ML methods in Laser-Wakefield Acceleration.

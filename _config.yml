@@ -2,6 +2,7 @@
 title: Francesco Capuano
 position: ML Researcher
 affiliation: LeRobot, Hugging Face
+affiliation_link: https://huggingface.co/lerobot
 email: fc.francescocapuano@gmail.com
 
 # Search Engine Optimization (SEO)
@@ -21,20 +22,18 @@ twitter: https://x.com/_fracapuano
 # Images (e.g., your profile picture and your website's favicon) 
 # "favicon" and "favicon_dark" are used for the light and dark modes, respectively. 
 avatar: ./assets/img/me.jpeg
-favicon: ./assets/img/favicon.png
-favicon_dark: ./assets/img/favicon-dark.png
+favicon: ./assets/img/logo.png
+favicon_dark: ./assets/img/logo-dark.png
 
 # Footnote
-# You may use the option to disable the footnote, "Powered by Jekyll and Minimal Light theme."
-enable_footnote: true
+enable_footnote: false
 
 # Auto Dark Mode
 # You may use the option to disable the automatic dark theme
 auto_dark_mode: false
 
 # Font
-# You can use this option to choose between Serif or Sans Serif fonts.
-font: "Serif" # or "Sans Serif"
+font: "Sans Serif"
 
 # Google Analytics ID
 # Please remove this if you don't use Google Analytics
@@ -49,9 +48,6 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - README.md
-  - README_zh_Hans.md
-  - README_zh_Hant.md
-  - README_de.md
   - LICENSE
   - minimal-light.gemspec
   - html_source_file/

@@ -1,19 +1,16 @@
 ---
-layout: homepage
+layout: default
 ---
 
 <div class="blog-container">
   <h2>Blog</h2>
   <div class="blog-posts">
-    {% assign all_posts = site.data.blog.posts | sort: 'date' | reverse %}
-    {% for post in all_posts %}
+    {% for post in site.posts %}
     <div class="blog-post">
-      <h3>{{ post.title }}</h3>
-      <p class="post-date">{{ post.date }}</p>
+      <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+      <p class="post-date">{{ post.date | date: "%B %d, %Y" }}</p>
       <p class="post-excerpt">{{ post.excerpt }}</p>
-      {% if post.link %}
-      <a href="{{ post.link }}" class="read-more">Read more</a>
-      {% endif %}
+      <a href="{{ post.url }}" class="read-more">Read more</a>
     </div>
     {% endfor %}
   </div>
