@@ -1,22 +1,44 @@
 main:
+  - title: "Sim-is-more: Randomizing HW-NAS with Synthetic Devices"
+    authors: <strong>Francesco Capuano*</strong>, Gabriele Tiboni, Niccolò Cavagnero, Giuseppe Averta (*Corresponding author)
+    conference_short: NA
+    conference: (Under Review)
+    pdf: https://arxiv.org/pdf/2504.00663
+    code: https://github.com/fracapuano/sim-is-more
+    bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:pAS7xDsmQskJ:scholar.google.com/&output=citation&scisdr=CgIQ5_D2ENjryZGfDSw:AAZF9b8AAAAAaCyZFSwRo7_u4QAm2JjcyR-0u1w&scisig=AAZF9b8AAAAAaCyZFezZ-86eUX9R4rGpGoTyz4A&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1
+    image: ./assets/img/publications/automl25/fig1.png
 
-  - title: Continual Learning for Abdominal Multi-Organ and Tumor Segmentation
-    authors: Yixiao Zhang, Xinyi Li, Huimiao Chen, Alan Yuille, <strong>Yaoyao Liu*</strong>, Zongwei Zhou* (*Corresponding authors)
-    conference_short: MICCAI
-    conference: International Conference on Medical Image Computing and Computer-Assisted Intervention <strong>(MICCAI)</strong>, 2023.
-    pdf: https://arxiv.org/pdf/2306.00988.pdf
-    code: https://github.com/MrGiovanni/ContinualLearning
-    bibtex: https://bib.yliu.me/MICCAI23.txt
-    image: ./assets/img/teaser_example_2.png
-    notes: Early Accept
+  - title: Shaping Laser Pulses with Reinforcement Learning
+    authors: <strong>Francesco Capuano*</strong>, Davorin Peceli, Gabriele Tiboni (*Corresponding author)
+    conference_short: RLC'25
+    conference: Reinforcement Learning Conference, 2025
+    pdf: https://arxiv.org/abs/2503.00499
+    code: https://github.com/fracapuano/lase-rl
+    bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:QokepdSWCM0J:scholar.google.com/&output=citation&scisdr=CgIQ5_D2ENjryZGehF0:AAZF9b8AAAAAaCyYnF0fWVPoGLS5UB1bAHyPBA4&scisig=AAZF9b8AAAAAaCyYnKrMgmwkxwFb0TYcgE8k3ss&scisf=4&ct=citation&cd=-1&hl=en
+    image: ./assets/img/publications/rlc25/fig1.png
 
-  - title: "Mnemonics Training: Multi-Class Incremental Learning without Forgetting"
-    authors: <strong>Yaoyao Liu</strong>, Yuting Su, An-An Liu, Bernt Schiele, Qianru Sun
-    conference_short: CVPR
-    conference: IEEE/CVF Conference on Computer Vision and Pattern Recognition <strong>(CVPR)</strong>, 2020.
-    pdf: https://arxiv.org/pdf/2002.10211.pdf
-    code: https://github.com/yaoyao-liu/class-incremental-learning/tree/main/mnemonics-training
-    page: https://class-il.mpi-inf.mpg.de/mnemonics/
-    bibtex: https://class-il.mpi-inf.mpg.de/mnemonics/
-    notes: Oral Presentation
-    image: ./assets/img/teaser_example.png
+  - title: High-Power Laser Pulse Shape Optimization with Hybrid Stochastic Optimization Algorithms
+    authors: Ishraq Md Anjum *, Davorin Peceli, <strong>Francesco Capuano</strong>, Bedřic Rus (*Corresponding author)
+    conference_short: FiO'24
+    conference: Frontier in Optics
+    bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:XI-RykQ2kQcJ:scholar.google.com/&output=citation&scisdr=CgIQ5_D2ENjryZGSu3s:AAZF9b8AAAAAaCyUo3uxkK5JGIfF1w_OIXAMA6w&scisig=AAZF9b8AAAAAaCyUoy1lQd1_JPnE7Eu0D8sGDDU&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1
+    image: ./assets/img/publications/fio24/OT10000F1.png
+  
+  - title: "TempoRL: laser pulse temporal shape optimization with deep reinforcement learning"
+    authors: <strong>Francesco Capuano*</strong>, Davorin Peceli, Gabriele Tiboni, Bedřic Rus (*Corresponding author)
+    conference_short: SPIE'23
+    conference: SPIE Optics and Optoelectronics, 2023
+    pdf: https://arxiv.org/pdf/2304.12187
+    code: https://github.com/fracapuano/TempoRL
+    bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:QjD8Z9wkfjQJ:scholar.google.com/&output=citation&scisdr=CgIQ5_D2ENjryZGQVco:AAZF9b8AAAAAaCyWTcpin4SJ7PCEV38fIwyCiWM&scisig=AAZF9b8AAAAAaCyWTZ2S_3oPYmx9B7Is-NaSORE&scisf=4&ct=citation&cd=-1&hl=fi&scfhb=1
+    image: ./assets/img/publications/spie2023/temporl.gif
+    notes: Best Student Paper Award
+
+  - title: Laser pulse duration optimization with numerical methods
+    authors: <strong>Francesco Capuano*</strong>, Davorin Peceli, Gabriele Tiboni, Alexandr Špaček, Bedřic Rus (*Corresponding author)
+    conference_short: PCaPAC'22
+    conference: Personal Computers and Particle Accelerator Controls, 2022
+    pdf: https://accelconf.web.cern.ch/pcapac2022/papers/pcapac2022-proceedings.pdf#page=43
+    code: https://github.com/fracapuano/TempoRL
+    bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:DlnlMBN0Wd8J:scholar.google.com/&output=citation&scisdr=CgIQ5_D2ENjryZGKmbI:AAZF9b8AAAAAaCyMgbKLMijX-y00hejaBOwoSLI&scisig=AAZF9b8AAAAAaCyMgWjozJEVM3c0U5Xq4EOI1Jk&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1
+    image: ./assets/img/publications/pcapac22/THPP5f2.png

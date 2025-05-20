@@ -1,8 +1,8 @@
 ---
 layout: post
-title: "Welcome to My Blog"
+title: "Why I like BJJ"
 date: 2023-05-19
-categories: [introduction, blog]
+categories: [personal, blog]
 ---
 
 ## Hello and Welcome!
