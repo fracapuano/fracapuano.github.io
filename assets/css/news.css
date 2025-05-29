@@ -14,14 +14,10 @@ body {
 .news-list {
     display: flex;
     flex-direction: column;
-    height: 250px;
+    height: 400px;
     overflow-y: auto;
     padding-top: 10px;
     margin-top: 1px;
-}
-
-.news-item {
-    margin-bottom: 10px;
 }
 
 .news-item p {

@@ -1,88 +1,491 @@
-/* Modify avatar image size */
-.image.avatar img {
-  border-radius: 100%;
-  width: 200px; /* Increased from 100% to a fixed larger size */
-  padding: 10px;
+/* Mobile-First Responsive Design for Academic Website */
+/* Complete custom implementation without theme conflicts */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
 }
 
-#header .image.avatar {
-  margin: 0 0 1em 0;
-  width: 12.00em; /* Increased from 8.00em */
-}
-
-/* Reduce top spacing */
-header {
-  width: 350px; /* Increased further to accommodate the full name */
-  float: left;
-  position: fixed;
-  -webkit-font-smoothing: subpixel-antialiased;
-  padding-top: 0;
-  margin-top: 0;
-  text-align: center;
-  top: 0;
-}
-
-/* Ensure name is on one line */
-header h1 {
-  font-size: 22px; /* Adjusted font size to fit better */
-  white-space: nowrap !important; /* Prevent line breaks with higher priority */
-  margin-bottom: 10px;
-  margin-top: 10px;
-  overflow: visible; /* Ensure text is not cut off */
-  display: inline-block; /* Help with centering and width */
-  max-width: 100%; /* Ensure it doesn't overflow the header */
-  word-break: keep-all !important; /* Additional property to prevent breaking */
-  hyphens: none !important; /* Disable hyphenation */
-}
-
-/* Adjust the wrapper width to accommodate the wider header */
-.wrapper {
-  width: 1000px;
-  margin: 0 auto;
-  padding: 0;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-section {
-  width: 650px;
-  float: right;
-  padding-top: 0;
-  margin-top: 0;
-  padding-bottom: 50px;
-}
-
-/* Navigation specific styling - updated v2 */
-section .navigation, .wrapper section .navigation {
-  margin: 2em 0 0 0; /* More reasonable spacing */
+  margin: 0;
   padding: 0;
+  line-height: 1.6;
+  font-size: 16px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #333;
+  background: #fff;
 }
 
-/* Also update responsive styles for larger avatar */
-@media print, screen and (max-width: 960px) {
-  .image.avatar img {
-    border-radius: 100%;
-    width: 180px; /* Increased from 117px */
-    padding: 20px;
+/* Container with proper mobile padding */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px; /* Essential mobile padding */
+  min-height: 100vh;
+}
+
+/* Mobile-first header styling */
+header {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  padding: 20px 0;
+  -webkit-font-smoothing: subpixel-antialiased;
+  background: transparent;
+}
+
+/* Avatar styling for mobile */
+.image.avatar {
+  display: block;
+  margin: 0 auto 1em auto;
+  width: auto;
+}
+
+.image.avatar img {
+  border-radius: 50% !important;
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover;
+  padding: 5px;
+  margin: 0 auto 15px;
+  display: block !important;
+  border: 0;
+}
+
+/* Mobile-friendly heading */
+header h1 {
+  font-size: 24px !important;
+  margin: 10px 0;
+  line-height: 1.2;
+  word-wrap: break-word;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  max-width: 100%;
+  color: #043361;
+  font-weight: 500;
+  white-space: normal !important;
+}
+
+/* Social icons container */
+.social-icons {
+  display: flex !important;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.social-icons a {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px; /* Touch-friendly size */
+  min-height: 44px;
+  padding: 8px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  background-color: transparent !important;
+  width: auto !important;
+  height: auto !important;
+  line-height: normal !important;
+  text-align: center;
+  color: #043361 !important;
+  font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+  background-color: rgba(4, 51, 97, 0.1) !important;
+  transform: scale(1.1);
+  color: #043361 !important;
+}
+
+/* Main content section */
+section {
+  width: 100% !important;
+  padding: 10px 0;
+  margin-top: 0;
+  float: none !important;
+  position: static !important;
+  border: none !important;
+}
+
+/* Mobile-first navigation */
+.navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 20px 0;
+  padding: 15px;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 8px;
+}
+
+.navigation a {
+  display: flex !important;
+  padding: 12px 16px;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  min-height: 44px; /* Touch-friendly */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #043361;
+  font-weight: 500;
+}
+
+.navigation a:hover,
+.navigation a:focus {
+  background: rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+  color: #043361;
+}
+
+/* Typography and content styling */
+h1, h2, h3, h4, h5, h6 {
+  color: #043361;
+  margin: 0 0 20px 0;
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 28px;
+  margin: 30px 0 15px 0;
+}
+
+h3 {
+  font-size: 24px;
+  margin: 25px 0 15px 0;
+}
+
+/* Content spacing and readability */
+section p,
+section ul,
+section ol {
+  margin: 0 0 20px 0;
+  line-height: 1.7;
+}
+
+section h2,
+section h3,
+section h4 {
+  margin: 30px 0 15px 0;
+  line-height: 1.3;
+}
+
+/* Links styling */
+a {
+  color: #337ab7;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #23527c;
+  text-decoration: underline;
+}
+
+/* Images responsive */
+section img,
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 4px;
+}
+
+/* Tables responsive */
+section table,
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  overflow-x: auto;
+  display: block;
+  white-space: nowrap;
+}
+
+th, td {
+  text-align: left;
+  padding: 5px 10px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+th {
+  color: #444;
+  font-weight: 600;
+}
+
+/* Links touch-friendly */
+section a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 4px;
+}
+
+/* Code blocks responsive */
+pre,
+code {
+  overflow-x: auto;
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 1.4;
+  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+}
+
+pre {
+  background: #f8f8f8;
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+  padding: 8px 10px;
+  margin: 10px 0;
+}
+
+code {
+  color: #333;
+}
+
+/* Custom elements */
+autocolor {
+  color: #595959;
+}
+
+position {
+  font-size: 1.10rem;
+  color: #666;
+}
+
+papertitle {
+  font-weight: 600;
+  font-size: 100%;
+}
+
+education {
+  font-weight: 500;
+  font-size: 115%;
+}
+
+/* News section styling */
+.news-container {
+  margin: 10px 0;
+}
+
+.news-list {
+  max-height: 200px;
+}
+
+.news-item {
+  margin: 1px 0;
+  padding: 1px 0;
+}
+
+
+/* Publications styling */
+.publications ol {
+  padding-left: 20px;
+}
+
+.pub-row {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+/* Tablet styles */
+@media screen and (min-width: 768px) {
+  .wrapper {
+    padding: 0 40px;
   }
-  
-  /* Ensure name stays on one line in responsive view */
+
   header {
-    width: auto;
+    padding: 30px 0;
   }
-  
+
+  .image.avatar img {
+    width: 150px !important;
+    height: 150px !important;
+  }
+
   header h1 {
-    white-space: nowrap;
+    font-size: 28px !important;
+  }
+
+  .navigation {
+    flex-direction: row;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .navigation a {
+    min-width: 120px;
+    justify-content: center;
+  }
+
+  section {
+    padding: 30px 0;
+  }
+
+  h2 {
+    font-size: 32px;
+  }
+
+  h3 {
+    font-size: 26px;
   }
 }
 
-@media print, screen and (max-width: 480px) {
+/* Desktop styles */
+@media screen and (min-width: 1024px) {
+  .wrapper {
+    display: flex !important;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 0 60px;
+    width: auto !important;
+    margin: 0 auto;
+  }
+
+  header {
+    width: 350px !important;
+    position: sticky !important;
+    top: 20px;
+    flex-shrink: 0;
+    padding: 40px 20px !important;
+    text-align: center;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.02);
+    float: none !important;
+  }
+
   .image.avatar img {
-    border-radius: 100%;
-    width: 150px; /* Increased from 95px */
-    padding: 20px;
+    width: 180px !important;
+    height: 180px !important;
+  }
+
+  header h1 {
+    font-size: 26px !important;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .navigation {
+    flex-direction: column;
+    background: transparent;
+    padding: 0;
+    gap: 5px;
+  }
+
+  .navigation a {
+    justify-content: flex-start;
+    padding: 8px 12px;
+  }
+
+  section {
+    flex: 1 !important;
+    max-width: 700px;
+    padding: 40px 0;
+    width: auto !important;
+    float: none !important;
+  }
+
+  h2 {
+    font-size: 36px;
+  }
+
+  h3 {
+    font-size: 28px;
+  }
+}
+
+/* Large desktop styles */
+@media screen and (min-width: 1200px) {
+  .wrapper {
+    max-width: 1200px;
+    gap: 60px;
+  }
+
+  header {
+    width: 380px !important;
+    padding: 50px 30px !important;
+  }
+
+  .image.avatar img {
+    width: 200px !important;
+    height: 200px !important;
+  }
+
+  header h1 {
+    font-size: 28px !important;
+  }
+
+  section {
+    max-width: 750px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .wrapper {
+    display: block !important;
+    max-width: none;
+    padding: 0;
+  }
+
+  header {
+    position: static !important;
+    width: 100% !important;
+    text-align: center;
+    padding: 20px 0 !important;
+    float: none !important;
+  }
+
+  .navigation {
+    display: none;
+  }
+
+  section {
+    width: 100% !important;
+    padding: 0;
+    float: none !important;
+  }
+}
+
+/* High DPI displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi) {
+  .image.avatar img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Focus styles for accessibility */
+a:focus,
+button:focus {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
+}
+
+/* Reduced motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  html {
+    scroll-behavior: auto;
   }
 } 
