@@ -38,77 +38,82 @@
   </head>
   <body>
     <div class="wrapper">
-      <header>
+      <div class="sidebar">
+        <header class="profile-section">
+          
+          {% if site.avatar %}
+          <a class="image avatar"><img src="{{ '/' | absolute_url }}{{ site.avatar }}" alt="avatar" /></a>
+          {% endif %}
+
+          {% if site.google_analytics %}
+          <!-- Google Tag Manager -->
+          <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+            'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-TW53CD57');</script>
+            <!-- End Google Tag Manager -->
+          {% endif %}
+
+          <h1>{{ site.title }}</h1>
+
+          {% if site.position %}
+          <position style="font-size:1.10rem;">{{ site.position }}</position>
+          <br>
+          {% endif %}
+          {% if site.affiliation %}
+          <a href="{{ site.affiliation_link }}" rel="noopener"><autocolor>{{ site.affiliation }}</autocolor></a>
+          <br>
+          {% endif %}
+          {% if site.email %}
+          <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+          {% endif %}
+
+          <br>
+          <div class="social-icons">
+          {% if site.google_scholar %}
+          <a href="{{ site.google_scholar }}">
+            <i class="ai ai-google-scholar" style="font-size:1.1rem"></i>
+          </a>  
+          {% endif %}
+
+          {% if site.cv_link %}
+          <a href="{{ site.cv_link }}">
+            <i class="ai ai-cv" style="font-size:1.2rem;"></i>
+          </a>
+          {% endif %}
+
+          {% if site.github_link %}
+          <a href="{{ site.github_link }}">
+            <i class="fab fa-github"></i>
+          </a>
+          {% endif %}
+
+          {% if site.linkedin %}
+          <a href="{{ site.linkedin }}">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          {% endif %}
+
+          {% if site.twitter %}
+          <a href="{{ site.twitter }}">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          {% endif %}
+          </div>
+
+        </header>
         
-        {% if site.avatar %}
-        <a class="image avatar"><img src="{{ '/' | absolute_url }}{{ site.avatar }}" alt="avatar" /></a>
-        {% endif %}
-
-        {% if site.google_analytics %}
-        <!-- Google Tag Manager -->
-        <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-          })(window,document,'script','dataLayer','GTM-TW53CD57');</script>
-          <!-- End Google Tag Manager -->
-        {% endif %}
-
-        <h1>{{ site.title }}</h1>
-
-        {% if site.position %}
-        <position style="font-size:1.10rem;">{{ site.position }}</position>
-        <br>
-        {% endif %}
-        {% if site.affiliation %}
-        <a href="{{ site.affiliation_link }}" rel="noopener"><autocolor>{{ site.affiliation }}</autocolor></a>
-        <br>
-        {% endif %}
-        {% if site.email %}
-        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
-        {% endif %}
-
-        <br>
-        <br>
-        <div class="social-icons">
-        {% if site.google_scholar %}
-        <a href="{{ site.google_scholar }}">
-          <i class="ai ai-google-scholar" style="font-size:1.2rem"></i>
-        </a>  
-        {% endif %}
-
-        {% if site.cv_link %}
-        <a href="{{ site.cv_link }}">
-          <i class="ai ai-cv" style="font-size:1.3rem;"></i>
-        </a>
-        {% endif %}
-
-        {% if site.github_link %}
-        <a href="{{ site.github_link }}">
-          <i class="fab fa-github"></i>
-        </a>
-        {% endif %}
-
-        {% if site.linkedin %}
-        <a href="{{ site.linkedin }}">
-          <i class="fab fa-linkedin"></i>
-        </a>
-        {% endif %}
-
-        {% if site.twitter %}
-        <a href="{{ site.twitter }}">
-          <i class="fab fa-x-twitter"></i>
-        </a>
-        {% endif %}
+        <div class="news-section">
+          {% include news.md %}
         </div>
-
-        <div class="navigation">
+      </div>
+      
+      <section>
+        <div class="top-navigation">
           <a href="{{ '/' | absolute_url }}">Home</a>
           <a href="{{ '/' | absolute_url }}blog">Blog</a>
         </div>
-
-      </header>
-      <section>
 
         {{ content }}
 

@@ -28,38 +28,56 @@ body {
   min-height: 100vh;
 }
 
-/* Mobile-first header styling */
-header {
+/* Sidebar container for the left side components */
+.sidebar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 2px; /* Reduced from 9px to roughly half */
+}
+
+/* Mobile-first header styling - now for profile section only */
+header.profile-section {
   width: 100%;
   position: relative;
   text-align: center;
-  padding: 20px 0;
+  padding: 15px; /* Reduced from 20px */
   -webkit-font-smoothing: subpixel-antialiased;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12px;
+}
+
+/* News section styling - separate component */
+.news-section {
+  width: 100%;
+  padding: 20px;
   background: transparent;
+  border-radius: 12px;
+  border: none;
 }
 
 /* Avatar styling for mobile */
 .image.avatar {
   display: block;
-  margin: 0 auto 1em auto;
+  margin: 0 auto 0.8em auto; /* Reduced bottom margin */
   width: auto;
 }
 
 .image.avatar img {
   border-radius: 50% !important;
-  width: 120px !important;
-  height: 120px !important;
+  width: 100px !important; /* Reduced from 120px */
+  height: 100px !important; /* Reduced from 120px */
   object-fit: cover;
   padding: 5px;
-  margin: 0 auto 15px;
+  margin: 0 auto 10px; /* Reduced bottom margin */
   display: block !important;
   border: 0;
 }
 
 /* Mobile-friendly heading */
 header h1 {
-  font-size: 24px !important;
-  margin: 10px 0;
+  font-size: 22px !important; /* Reduced from 24px */
+  margin: 8px 0; /* Reduced from 10px 0 */
   line-height: 1.2;
   word-wrap: break-word;
   hyphens: auto;
@@ -75,17 +93,17 @@ header h1 {
   display: flex !important;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
-  margin: 15px 0;
+  gap: 12px; /* Reduced from 15px */
+  margin: 8px 0; /* Reduced from 15px 0 */
 }
 
 .social-icons a {
   display: inline-flex !important;
   align-items: center;
   justify-content: center;
-  min-width: 44px; /* Touch-friendly size */
-  min-height: 44px;
-  padding: 8px;
+  min-width: 40px; /* Reduced from 44px for more compact look */
+  min-height: 40px; /* Reduced from 44px */
+  padding: 6px; /* Reduced from 8px */
   border-radius: 4px;
   transition: all 0.3s ease;
   background-color: transparent !important;
@@ -94,7 +112,7 @@ header h1 {
   line-height: normal !important;
   text-align: center;
   color: #043361 !important;
-  font-size: 1.2rem;
+  font-size: 1.1rem; /* Reduced from 1.2rem */
 }
 
 .social-icons a:hover {
@@ -113,37 +131,34 @@ section {
   border: none !important;
 }
 
-/* Mobile-first navigation */
-.navigation {
+/* Top navigation in main content area - MOBILE FIRST - Minimalistic */
+.top-navigation {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin: 20px 0;
-  padding: 15px;
-  background: rgba(0, 0, 0, 0.02);
-  border-radius: 8px;
+  justify-content: flex-end;
+  gap: 20px;
+  margin-bottom: 25px;
+  padding: 0;
 }
 
-.navigation a {
-  display: flex !important;
-  padding: 12px 16px;
+.top-navigation a {
+  display: inline;
+  padding: 0;
   text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  min-height: 44px; /* Touch-friendly */
-  align-items: center;
-  justify-content: center;
-  text-align: center;
   color: #043361;
   font-weight: 500;
+  font-size: 1.05em;
+  background: none;
+  border: none;
+  transition: color 0.2s ease;
 }
 
-.navigation a:hover,
-.navigation a:focus {
-  background: rgba(0, 0, 0, 0.1);
-  transform: translateY(-1px);
-  color: #043361;
+.top-navigation a:hover,
+.top-navigation a:focus {
+  color: #337ab7;
+  text-decoration: underline;
 }
+
+/* Mobile-first navigation - REMOVED - navigation now in top right */
 
 /* Typography and content styling */
 h1, h2, h3, h4, h5, h6 {
@@ -235,104 +250,114 @@ section a {
 /* Code blocks responsive */
 pre,
 code {
-  overflow-x: auto;
-  max-width: 100%;
-  font-size: 14px;
-  line-height: 1.4;
-  font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Courier New", monospace;
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 0.9em;
 }
 
 pre {
-  background: #f8f8f8;
+  background: #f7f7f7;
   border: 1px solid #e5e5e5;
-  border-radius: 5px;
-  padding: 8px 10px;
-  margin: 10px 0;
+  border-radius: 4px;
+  padding: 15px;
+  overflow-x: auto;
+  line-height: 1.5;
 }
 
 code {
-  color: #333;
+  background: #f7f7f7;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 
-/* Custom elements */
 autocolor {
-  color: #595959;
+  color: #043361;
 }
 
 position {
-  font-size: 1.10rem;
-  color: #666;
+  color: #043361;
+  font-weight: 400;
 }
 
 papertitle {
+  color: #043361;
   font-weight: 600;
-  font-size: 100%;
 }
 
 education {
-  font-weight: 500;
-  font-size: 115%;
+  color: #666;
+  font-style: italic;
+  margin-top: 5px;
 }
 
-/* News section styling */
 .news-container {
-  margin: 10px 0;
+  margin: 0;
 }
 
 .news-list {
-  max-height: 200px;
+  height: 180px;
 }
 
 .news-item {
-  margin: 1px 0;
-  padding: 1px 0;
+  margin-bottom: 8px;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
 }
 
-
-/* Publications styling */
 .publications ol {
-  padding-left: 20px;
+  list-style: none;
 }
 
 .pub-row {
   display: flex;
-  align-items: center;
-  margin: 20px 0;
+  flex-direction: column;
+  margin-bottom: 1em;
 }
 
-/* Tablet styles */
 @media screen and (min-width: 768px) {
   .wrapper {
     padding: 0 40px;
   }
 
-  header {
-    padding: 30px 0;
+  .sidebar {
+    gap: 18px; /* Reduced from 25px */
+  }
+
+  header.profile-section {
+    padding: 20px; /* Reduced from 30px */
+  }
+
+  .news-section {
+    padding: 25px;
+  }
+
+  .news-section .news-container {
+    margin: 10px 0;
+  }
+
+  .news-section .news-list {
+    height: 200px;
   }
 
   .image.avatar img {
-    width: 150px !important;
-    height: 150px !important;
+    width: 130px !important; /* Reduced from 150px */
+    height: 130px !important; /* Reduced from 150px */
   }
 
-  header h1 {
-    font-size: 28px !important;
-  }
-
-  .navigation {
-    flex-direction: row;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-  }
-
-  .navigation a {
-    min-width: 120px;
-    justify-content: center;
+  header.profile-section h1 {
+    font-size: 25px !important; /* Reduced from 28px */
   }
 
   section {
     padding: 30px 0;
+  }
+
+  .top-navigation {
+    margin-bottom: 25px;
+    padding: 0;
+  }
+
+  .top-navigation a {
+    font-size: 1.05em;
   }
 
   h2 {
@@ -349,46 +374,64 @@ education {
   .wrapper {
     display: flex !important;
     align-items: flex-start;
-    gap: 40px;
+    gap: 60px; /* Increased from 40px for much more separation */
     padding: 0 60px;
     width: auto !important;
     margin: 0 auto;
   }
 
-  header {
-    width: 350px !important;
+  .sidebar {
+    width: 310px !important; /* Increased from 280px (about 10% larger) */
     position: sticky !important;
     top: 20px;
     flex-shrink: 0;
-    padding: 40px 20px !important;
+    gap: 15px; /* Reduced from 20px */
+  }
+
+  header.profile-section {
+    width: 100% !important;
+    padding: 25px 20px !important; /* Reduced from 40px 30px */
     text-align: center;
     border-radius: 12px;
     background: rgba(0, 0, 0, 0.02);
-    float: none !important;
+  }
+
+  .news-section {
+    width: 110% !important; /* Reduced from 120% for better separation */
+    padding: 25px 25px !important; /* Reduced from 30px 25px */
+    text-align: justify;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    margin-left: -5%; /* Reduced offset for smaller width */
+    margin-right: 25px; /* Increased right margin for more separation */
+  }
+
+  .news-section .news-container {
+    margin: 0;
+  }
+
+  .news-section .news-container h2 {
+    font-size: 18px !important; /* Reduced from 20px */
+    margin-bottom: 12px; /* Reduced from 15px */
+    color: #043361;
+  }
+
+  .news-section .news-list {
+    height: 250px;
+    font-size: 0.85em;
   }
 
   .image.avatar img {
-    width: 180px !important;
-    height: 180px !important;
+    width: 140px !important; /* Reduced from 180px */
+    height: 140px !important; /* Reduced from 180px */
   }
 
-  header h1 {
-    font-size: 26px !important;
+  header.profile-section h1 {
+    font-size: 22px !important; /* Reduced from 26px */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-  }
-
-  .navigation {
-    flex-direction: column;
-    background: transparent;
-    padding: 0;
-    gap: 5px;
-  }
-
-  .navigation a {
-    justify-content: flex-start;
-    padding: 8px 12px;
   }
 
   section {
@@ -397,6 +440,15 @@ education {
     padding: 40px 0;
     width: auto !important;
     float: none !important;
+  }
+
+  .top-navigation {
+    margin-bottom: 30px;
+    padding: 0;
+  }
+
+  .top-navigation a {
+    font-size: 1.1em;
   }
 
   h2 {
@@ -412,21 +464,36 @@ education {
 @media screen and (min-width: 1200px) {
   .wrapper {
     max-width: 1200px;
-    gap: 60px;
+    gap: 70px; /* Increased from 50px for even more separation at large screens */
   }
 
-  header {
-    width: 380px !important;
-    padding: 50px 30px !important;
+  .sidebar {
+    width: 330px !important; /* Increased from 300px (about 10% larger) */
+    gap: 18px; /* Reduced from 25px */
+  }
+
+  header.profile-section {
+    padding: 30px 25px !important; /* Reduced from 50px 30px */
+  }
+
+  .news-section {
+    width: 110% !important; /* Reduced from 120% for better separation */
+    padding: 25px 20px !important; /* Reduced from 30px 25px */
+    text-align: justify;
+    background: transparent;
+    border: none;
+    border-radius: 12px;
+    margin-left: -5%; /* Reduced offset for smaller width */
+    margin-right: 25px; /* Increased right margin for more separation */
   }
 
   .image.avatar img {
-    width: 200px !important;
-    height: 200px !important;
+    width: 150px !important; /* Reduced from 200px */
+    height: 150px !important; /* Reduced from 200px */
   }
 
-  header h1 {
-    font-size: 28px !important;
+  header.profile-section h1 {
+    font-size: 24px !important; /* Reduced from 28px */
   }
 
   section {
@@ -442,16 +509,27 @@ education {
     padding: 0;
   }
 
-  header {
+  .sidebar {
+    width: 100% !important;
+    position: static !important;
+    gap: 10px;
+  }
+
+  header.profile-section {
     position: static !important;
     width: 100% !important;
     text-align: center;
     padding: 20px 0 !important;
-    float: none !important;
+    background: transparent !important;
+    border: none !important;
   }
 
-  .navigation {
-    display: none;
+  .news-section {
+    display: none; /* Hide news in print */
+  }
+
+  .top-navigation {
+    display: none; /* Hide navigation in print */
   }
 
   section {

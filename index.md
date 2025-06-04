@@ -15,7 +15,7 @@ I am currently working at Hugging Face, making cute robots smarter alongside [Re
 - **Main: Deep Reinforcement Learning, Robot Learning**, Meta-Reinforcement Learning, Transfer Learning
 - Misc: Continual Reinforcement Learning, Hardware-Aware Neural Architecture Search, Machine Learning for Science
 
-{% include news.md %}
+<!-- {% include news.md %} -->
 
 {% include_relative _includes/publications.md %}
 
