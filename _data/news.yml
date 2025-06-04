@@ -1,3 +1,6 @@
+- date: June 2025
+  content: We released a sub-500M VLA trained exclusively on open data. Check out the <a href="https://arxiv.org/abs/2506.01844">preprint</a>!
+
 - date: May 2025
   content: Our paper on RL for High-Power Lasers control has been accepted to the main track at <a href="https://rl-conference.cc/">RLC'25</a>. See you in Edmonton 🇨🇦!
 

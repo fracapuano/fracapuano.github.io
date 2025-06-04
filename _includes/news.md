@@ -1,4 +1,4 @@
-<h2 id="news">News</h2>
+<h2 id="news">News 🗞️</h2>
 
 <div class="news-container">
   <div class="news-list">

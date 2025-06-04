@@ -1,8 +1,17 @@
 main:
+  - title: "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics"
+    authors: Mustafa Shukor*, Dana Aubakirova*, <strong>Francesco Capuano*</strong>, ..., Matthieu Cord, Thomas Wolf, Remi Cadene* (*Core team)
+    # conference_short: NA
+    # conference: (Under Review)
+    pdf: https://arxiv.org/abs/2506.01844
+    code: https://github.com/huggingface/lerobot
+    # bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:pAS7xDsmQskJ:scholar.google.com/&output=citation&scisdr=CgIQ5_D2ENjryZGfDSw:AAZF9b8AAAAAaCyZFSwRo7_u4QAm2JjcyR-0u1w&scisig=AAZF9b8AAAAAaCyZFezZ-86eUX9R4rGpGoTyz4A&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1
+    image: ./assets/img/publications/smolvla/fig1.png
+
   - title: "Sim-is-more: Randomizing HW-NAS with Synthetic Devices"
     authors: <strong>Francesco Capuano*</strong>, Gabriele Tiboni, Niccolò Cavagnero, Giuseppe Averta (*Corresponding author)
-    conference_short: NA
-    conference: (Under Review)
+    # conference_short: NA
+    # conference: (Under Review)
     pdf: https://arxiv.org/pdf/2504.00663
     code: https://github.com/fracapuano/sim-is-more
     bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:pAS7xDsmQskJ:scholar.google.com/&output=citation&scisdr=CgIQ5_D2ENjryZGfDSw:AAZF9b8AAAAAaCyZFSwRo7_u4QAm2JjcyR-0u1w&scisig=AAZF9b8AAAAAaCyZFezZ-86eUX9R4rGpGoTyz4A&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1

@@ -19,11 +19,11 @@ body {
 .news-section .news-list {
     display: flex;
     flex-direction: column;
-    height: 300px;
+    height: 250px;
     overflow-y: auto;
-    padding-top: 5px;
+    padding-top: 1px;
     margin-top: 5px;
-    padding-right: 5px; /* Space for scrollbar */
+    padding-right: 10px; /* Space for scrollbar */
 }
 
 .news-section .news-item p {
