@@ -63,9 +63,11 @@
 }
 
 .post-content img {
-  max-width: 100%;
+  max-width: 90%;
   height: auto;
-  margin: 1em 0;
+  margin: 1em auto;
+  max-height: 300px;
+  object-fit: cover;
 }
 
 .post-content blockquote {
@@ -114,5 +116,40 @@
   
   .post-date {
     color: #999;
+  }
+}
+
+/* Images that should wrap with text */
+.post-content img.wrap {
+  float: right;
+  max-width: 40%;
+  margin: 0 0 1em 1em; /* top right bottom left */
+  max-height: 300px;
+  object-fit: cover;
+}
+
+/* Disable float on small screens */
+@media (max-width: 600px) {
+  .post-content img.wrap {
+    float: none;
+    max-width: 90%;
+    margin: 1em auto;
+  }
+}
+
+/* Wrap image floating left */
+.post-content img.wrap-left {
+  float: left;
+  max-width: 40%;
+  margin: 0 1em 1em 0; /* top right bottom left */
+  max-height: 300px;
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .post-content img.wrap-left {
+    float: none;
+    max-width: 90%;
+    margin: 1em auto;
   }
 } 
