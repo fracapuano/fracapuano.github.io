@@ -152,4 +152,42 @@
     max-width: 90%;
     margin: 1em auto;
   }
+}
+
+/* Figure elements (image with caption) */
+.post-content figure {
+  margin: 1em auto;
+  max-width: 90%;
+}
+
+/* Figure wrapped to the right with text */
+.post-content figure.wrap {
+  float: right;
+  width: 40%;          /* fixed percentage width to keep caption aligned */
+  margin: 0 0 1em 1em; /* top right bottom left */
+  display: inline-block; /* ensure figure shrinks to its contents and keeps float */
+}
+
+/* Ensure the image inside the wrapped figure scales to the wrapper width */
+.post-content figure.wrap img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Disable float on small screens for figure */
+@media (max-width: 600px) {
+  .post-content figure.wrap {
+    float: none;
+    max-width: 90%;
+    margin: 1em auto;
+  }
+}
+
+/* Caption styling */
+.post-content figcaption {
+  text-align: center;
+  font-size: 0.9em;
+  color: #777;
+  margin-top: 0.3em;
 } 
