@@ -59,7 +59,7 @@
 
 .post-content {
   margin: 2em 0;
-  line-height: 1.7;
+  line-height: 1.5;
 }
 
 .post-content img {
@@ -175,9 +175,30 @@
   height: auto;
 }
 
+/* Figure wrapped to the left with text */
+.post-content figure.wrap-left {
+  float: left;
+  width: 40%;
+  margin: 0 1em 1em 0; /* top right bottom left */
+  display: inline-block;
+}
+
+/* Ensure the image inside the left-wrapped figure scales to the wrapper width */
+.post-content figure.wrap-left img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 /* Disable float on small screens for figure */
 @media (max-width: 600px) {
   .post-content figure.wrap {
+    float: none;
+    max-width: 90%;
+    margin: 1em auto;
+  }
+  
+  .post-content figure.wrap-left {
     float: none;
     max-width: 90%;
     margin: 1em auto;
