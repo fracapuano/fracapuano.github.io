@@ -1,4 +1,18 @@
 main:
+  - title: "Robot Learning: A Tutorial"
+    authors: <strong>Francesco Capuano*</strong>, Caroline Pascal, Adil Zouitine, Thomas Wolf, Michel Aractingi (*Corresponding author)
+    pdf: https://arxiv.org/pdf/2510.12403
+    code: https://github.com/fracapuano/robot-learning-tutorial
+    bibtex: https://scholar.googleusercontent.com/scholar.bib?q=info:hSXxhBgJEzUJ:scholar.google.com/&output=citation&scisdr=ChVr8jrdEO7moMbcsWU:ABGrvjIAAAAAaQTaqWUHTNANg9eUbBTFxJflqSM&scisig=ABGrvjIAAAAAaQTaqdZnzqjdYhP5CPnKGPV168U&scisf=4&ct=citation&cd=-1&hl=en&scfhb=1
+    image: ./assets/img/publications/robot-learning-tutorial/robot-learning-thumbnail.jpeg
+
+  - title: "Opinion: Small VLAs Self-Learn Consistency"
+    authors: <strong>Francesco Capuano*</strong>, Adil Zouitine, Michel Aractingi (*Corresponding author)
+    conference_short: (W) NeurIPS'25
+    conference: NeurIPS 2025 (Embodied World Models Workshop)
+    pdf: https://openreview.net/pdf?id=CtVPGdXFzD
+    image: ./assets/img/publications/neurips25/neurips-workshop-thumbnail.jpg
+
   - title: "SmolVLA: A Vision-Language-Action Model for Affordable and Efficient Robotics"
     authors: Mustafa Shukor*, Dana Aubakirova*, <strong>Francesco Capuano*</strong>, ..., Matthieu Cord, Thomas Wolf, Remi Cadene* (*Core team)
     # conference_short: NA

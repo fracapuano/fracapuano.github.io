@@ -1,13 +1,13 @@
 # Basic Information 
 title: Francesco Capuano
-position: ML Researcher
-affiliation: LeRobot, Hugging Face
-affiliation_link: https://huggingface.co/lerobot
+position: PhD Student
+affiliation: University of Oxford (A2I & FLAIR)
+affiliation_link: https://foersterlab.com/
 email: fc.francescocapuano@gmail.com
 
 # Search Engine Optimization (SEO)
 # The following information is used to improve the website traffic from search engines, e.g., Google.
-keywords: Francesco Capuano, Robotics, Reinforcement Learning, MVA, Paris, AI, Mistral, Hugging Face, Robot Learning, Oxford
+keywords: Francesco Capuano, Robotics, Reinforcement Learning, MVA, Paris, AI, Hugging Face, Robot Learning, Oxford
 description: Personal web page of Francesco Capuano, waiter turned researcher
 canonical: https://fracapuano.github.io
 
@@ -31,7 +31,7 @@ font: "Sans Serif"
 
 # Google Analytics ID
 # Please remove this if you don't use Google Analytics
-google_analytics: G-R5V62XZB4D
+google_analytics: G-S797TZYSYF
 
 # Use this project as a remote theme for GitHub Pages
 # See the guide here: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/adding-a-theme-to-your-github-pages-site-using-jekyll
