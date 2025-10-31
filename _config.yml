@@ -1,8 +1,6 @@
 # Basic Information 
-title: Francesco Capuano
 position: PhD Student
 affiliation: University of Oxford (A2I & FLAIR)
-affiliation_link: https://foersterlab.com/
 email: fc.francescocapuano@gmail.com
 
 # Search Engine Optimization (SEO)
@@ -14,7 +12,6 @@ canonical: https://fracapuano.github.io
 # Links 
 # If you don't need one of them, you may delete the corresponding line.
 google_scholar: https://scholar.google.com/citations?hl=fi&user=E6WpTrUAAAAJ
-cv_link: assets/files/capuano-cv.pdf
 github_link: https://github.com/fracapuano
 linkedin: https://www.linkedin.com/in/fracapuano
 twitter: https://x.com/_fracapuano
