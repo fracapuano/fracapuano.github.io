@@ -10,8 +10,6 @@ Born and raised in the suburbs of Rome, Italy 🇮🇹 I would have never though
 
 I am currently working towards my PhD ("DPhil") at the University of Oxford, where I am supervised by [Ingmar Posner](https://eng.ox.ac.uk/people/ingmar-posner) at [A2I](https://ori.ox.ac.uk/labs/a2i) and [Jakob Foerster](https://www.jakobfoerster.com/) at [FLAIR](https://foersterlab.com/).
 
-I also regularly contribute to open-source projects including [LeRobot](https://huggingface.co/lerobot) as a Research Fellow.
-
 ## Research Interests
 
 - **Main: Robot Learning, Deep Reinforcement Learning**, Meta-Reinforcement Learning, Transfer Learning
