@@ -211,4 +211,23 @@
   font-size: 0.9em;
   color: #777;
   margin-top: 0.3em;
+}
+
+/* Math display styling - ensure script tags are hidden */
+.post-content script[type="math/tex; mode=display"],
+.post-content script[type^="math/tex"][type*="display"] {
+  display: none !important;
+}
+
+/* MathJax display math styling */
+.post-content .MathJax_Display {
+  text-align: center !important;
+  margin: 1.5em 0 !important;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* Ensure align environments are properly displayed */
+.post-content .MathJax .MathJax_Display {
+  text-align: center !important;
 } 
