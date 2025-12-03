@@ -6,6 +6,18 @@ categories: [research, blog]
 ---
 > TLDR: A technical blog to revisit the fundamentals of what, in the crudest sense, makes Deep Learning work. A SGD-to-Muon tour, derived from first principles in math and then implemented from scratch in Jax.
 
+### Table of Contents
+- [Implementing SGD](#implementing-sgd)
+- [Adam](#adam)
+  - [Momentum](#momentum)
+  - [Adaptive Learning Rates](#adaptive-learning-rates)
+  - [Bias Correction](#bias-correction)
+  - [Implementing Adam](#implementing-adam)
+- [AdamW](#adamw)
+  - [Implementing AdamW](#implementing-adamw)
+- [Muon](#muon)
+  - [Implementing Muon](#implementing-muon)
+
 Take a NN parametrized with parameters $\theta$. 
 During training, the parameters are updated using differential information relating the performance obtained to the weights used, i.e. using $\nabla L (\theta) = \sum_{i \in \mathcal{D}} \nabla \ell_i (\theta)$, so that weights are iteratively updated according to:
 
@@ -18,7 +30,7 @@ On a conceptual level, stochastic gradients suffer less from poor initialization
 Computationally, estimating the full gradient requires processing *all* the samples in $\mathcal D$ through the network at all times, which is simply prohibitive for large-scale datasets, resulting in the--purely computational--need to process mini-batches $\mathcal B \subset \mathcal D: \vert \mathcal B \vert \ll \vert \mathcal D \vert$.
 Note how SGD still performs an update for the entire parameter vector $\theta$, although it exclusively relies on limited information regarding $\mathcal D$, in particular using $\mathcal B \subset \mathcal D$.
 
-### Implementing SGD
+### Implementing SGD <a id="implementing-sgd"></a>
 ```python
 from typing import TypeAlias
 import jax.numpy as jnp
@@ -47,7 +59,7 @@ def sgd_update(
 In most practical scenarios, researchers do not use SGD anymore in favour of more advanced optimizers.
 Today, the most widely used optimizer in practice is *Adam*, or its weight-decay variant, *AdamW*.
 
-## [Adam](https://arxiv.org/pdf/1412.6980)
+## [Adam](https://arxiv.org/pdf/1412.6980) <a id="adam"></a>
 
 Start from the end: the [infamous Adam](https://x.com/2prime_PKU/status/1948549824594485696) update rule proposes weights to be updated using:
 
@@ -59,7 +71,7 @@ There are multiple aspects in this update rule.
 Together, they make Adam a best-of-both-worlds optimization algorithm when it comes down to combining (1) momentum, ${m}_t$ (2) adaptive learning rates, ${v}_t$ and (3) bias corrections, $\hat{\bullet}$.
 Implementing Adam's update rule is relatively straightforward. In this note, I will cover all these fundamental *concepts* behind Adam, unpacking its update rule and hinting at what might be coming next (loaded spoiler: [*Muon*](https://kellerjordan.github.io/posts/muon/)).
 
-### Momentum, or $m_t$
+### Momentum, or $m_t$ <a id="momentum"></a>
 
 The intuition behind momentum is to reuse previous differential information to improve and stabilize optimization. 
 In that, momentum typically smoothens the trajectory of more standard SGD by aggregating previous ($1, \dots, \tau<t$) gradients into the timestep-$t$ update.
@@ -114,7 +126,7 @@ Effectively, by using $\ell_k (\theta_{t-1} - \eta \beta m_{t-1})$ in the parame
 
 Crucially, while both standard and Nesterov momentum naturally accomodate for a possibly time-dependant learning rate $\eta = \eta_t$, momentum still uses an *equal learning rate for all parameters*, resulting in the need to perform significant tuning of $\eta$ to improve practical performance.
 
-### Adaptive Learning Rates, or $v_t$
+### Adaptive Learning Rates, or $v_t$ <a id="adaptive-learning-rates"></a>
 Momentum proves useful in guaranteeing smoother, more stable optimization routines in practice, embedding inertia into the optimization process by reusing differential information collected earlier in the training process.
 However, it tragically suffers from the need to sensitivity to hyper-parameters, including both the learning rate $\eta$ and momentum factor $\beta$.
 While hyperparameter tuning is oftentimes simply necessary to have obtain good performance, in the 2010s many works ([AdaGrad, 2011](https://www.jmlr.org/papers/volume12/duchi11a/duchi11a.pdf), [Adadelta, 2012](https://arxiv.org/pdf/1212.5701), [RMSProp, 2012](https://www.cs.toronto.edu/~tijmen/csc321/slides/lecture_slides_lec6.pdf)) set out to reduce the dependancy of the optimization process on the identification of a "good" learning rate (who would even launch training with a bad one?), proposing *adaptive scalers* $v_t$ of a given initial learning rate $\eta$.
@@ -220,7 +232,7 @@ def rmsprop_update(
 
 > Sidenote: **AdaDelta** is another optimization algorithm that learns *without* defining a global learning rate. In that, it maintains a running average of the square parameter update, and uses it alongside the RMSProp-like average of square gradients to completely sidestep the need to define a global learning rate $\eta$.
 
-### Bias correction, or $\hat{\bullet}$
+### Bias correction, or $\hat{\bullet}$ <a id="bias-correction"></a>
 
 Both momentum $m_t$ and learning rate scalers $v_t$ are typically initialized as vectors of all zeros $m_0 = v_0 = \mathbf{0}$ in practice.
 This results in rather biased (small) estimates for both $m_t$ and $v_t$, especially early on in the training process.
@@ -240,7 +252,7 @@ Together with Momentum and the RMSProp update, bias correction fully describes t
 Bias correction ties everything together, improving on otherwise poor initialization of the first ($m_t$) and second ($v_t$) momentum estimates used by Adam.
 
 
-### Implementing Adam
+### Implementing Adam <a id="implementing-adam"></a>
 ```python
 def adam_update(
     params: ModelParameters, 
@@ -285,7 +297,7 @@ def adam_update(
     }
 ```
 
-## [AdamW](https://arxiv.org/abs/1711.05101)
+## [AdamW](https://arxiv.org/abs/1711.05101) <a id="adamw"></a>
 
 Regularizing neural networks can improve train–test generalization. Besides data augmentation and architectural constraints, a common approach is to add an explicit penalty term  
 
@@ -310,7 +322,7 @@ $$\theta_t = (1-\eta\lambda)\,\theta_{t-1} - \eta\,\frac{\hat m_t}{\sqrt{\hat v_
 
 In turn, this makes the update explicitly decomposable into (1) a *pure multiplicative decay* $(1-\eta\lambda)\theta$ and (2) a traditional Adam step on the data signal.
 
-#### Implementing AdamW
+#### Implementing AdamW <a id="implementing-adamw"></a>
 ```python
 def adamw_update(
     params: ModelParameters, 
@@ -350,7 +362,7 @@ In practice, AdamW will work just fine for your problem and--although not always
 If you are curious about something new and are ready for more exotic, a new optimizer has arrived in town (spoiler: Muon!). 
 This new optimizer is relatively straightforward to derive at an intuitive level, and is increasing popular on the [best website to be in the loop with the latest in ML](https://x.com).
 
-## The land of no $v_t$, i.e. [Muon](https://jeremybernste.in/writing/deriving-muon)
+## The land of no $v_t$, i.e. [Muon](https://jeremybernste.in/writing/deriving-muon) <a id="muon"></a>
 
 Muon ([Keller Jordan's blogpost](https://kellerjordan.github.io/posts/muon/) and [Jeremy Bernstein's blogpost](https://jeremybernste.in/writing/deriving-muon)) addresses a fundamental limitation of practical first-order optimization when training NNs: updates for 2D parameters (i.e., _matrices_--there are a ton in NNs) are oftentimes dominated by specific dimensions in practice.
 
@@ -387,7 +399,7 @@ Searching for said polynomial is arbitrarily complex, and in practice the proces
 The degree of the polynomical can also depend on an index $j=1, \dots, k$, so that it can change over time
 Together, this results in the Newton-Schultz-$k$ routine used in Muon to orthogonalize the gradient momentum $M_t$.
 
-#### Implementing Muon
+#### Implementing Muon <a id="implementing-muon"></a>
 ```python
 def orthogonalize(M: jnp.ndarray) -> jnp.ndarray:
     """from https://docs.modula.systems/algorithms/newton-schulz/
