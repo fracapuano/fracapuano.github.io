@@ -42,3 +42,7 @@ exclude:
   - LICENSE
   - minimal-light.gemspec
   - html_source_file/
+
+# Markdown settings
+kramdown:
+  math_engine: mathjax
