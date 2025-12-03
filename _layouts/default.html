@@ -35,6 +35,31 @@
     <link rel="stylesheet" href="{{ '/' | absolute_url }}assets/css/publications.css">
     <link rel="stylesheet" href="{{ '/' | absolute_url }}assets/css/blog.css">
     <link rel="stylesheet" href="{{ '/' | absolute_url }}assets/css/news.css">
+    <link rel="stylesheet" href="{{ '/' | absolute_url }}assets/css/syntax.css">
+    
+    <!-- MathJax v2 - Works natively with kramdown's script tags -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [['$','$'], ['\\(','\\)']],
+          displayMath: [['$$','$$'], ['\\[','\\]']],
+          processEscapes: true,
+          processEnvironments: true
+        },
+        TeX: {
+          extensions: ['AMSmath.js', 'AMSsymbols.js'],
+          equationNumbers: { autoNumber: 'AMS' }
+        }
+      });
+    </script>
+    <script type="text/javascript" async src="https://cdn.jsdelivr.net/npm/mathjax@2/MathJax.js?config=TeX-AMS_CHTML"></script>
+    <style>
+      /* Center display math */
+      .MathJax_Display {
+        text-align: center !important;
+        margin: 1.5em 0 !important;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
@@ -106,9 +131,11 @@
 
         </header>
         
+        {% unless page.layout == 'post' or page.layout == 'blog' %}
         <div class="news-section">
           {% include news.md %}
         </div>
+        {% endunless %}
       </div>
       
       <section>
