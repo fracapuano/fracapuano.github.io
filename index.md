@@ -1,5 +1,6 @@
 ---
 layout: homepage
+title: Home
 ---
 
 ## Ciao 👋
