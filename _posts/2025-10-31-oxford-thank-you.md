@@ -6,6 +6,12 @@ categories: [personal, blog]
 ---
 > TLDR: I just started my PhD at Oxford, and I could not even imagine this would become real over the last few years, when for the majority of the time I truly acted without a plan. I do believe I am someone who stumbled forward with help, luck, and all the hard work I was capable of. Now, I hope to support other hollowbreds finding their path too. [Read more](https://fracapuano.substack.com/p/my-thank-you-note-for-oxford)
 
+<figure class="wrap">
+  <img src="https://substackcdn.com/image/fetch/$s_!Sd-E!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3d8c61a5-6547-4f81-8179-ce8450ee4978_828x744.jpeg" alt="I am good at carrying glasses" />
+  <figcaption>Me, at 19, on a night on the job, proudly showcasing how to carry three glasses with one hand only.</figcaption>
+</figure>
+
+
 I recently stated my PhD at Oxford, which truly feels like a major milestone for me on a lot of very different levels: I am a first generation graduate who constantly worked throughout Uni, with little clue of where I would have ended up. I am still not exactly sure I managed to explain to my family what a PhD really is (you may claim I haven’t fully understood it myself, but I digress), but I feel extremely grateful and, for once, privileged to be at Oxford.
 
 The intensity and ownership of research have always been my dream, and I owe a lot to everyone who helped me realize what was truly unfathomable just a few years ago. I am particularly grateful to (in chronological order) [Charles Gorintin](https://x.com/Gorintic), [Sophia Yang](https://x.com/sophiamyang) and [Remi Cadene](https://x.com/RemiCadene): _grazie_, you did change my life more than I would have ever deemed possible.
@@ -14,6 +20,10 @@ A few months ago, I read [post on x-dot-com-the-everything-app](https://x.com/Sa
 
 Then and even now, I cannot relate to any of that. My story is different, very different. Most of the people I talked to about starting at Oxford—friends and family alike—did just trust my own judgement as per why this was a good call, but promptly moved past the significance of being admitted into Oxford and inquired about very important and pragmatic aspects, such as the pay, duration, career prospects, and more. Needless to say, my answers changed their opinion quite significantly.
 Going back in time more than 10 years, to 2013, I remember a rather similar predilection for pragmatism playing out as pressure for going into vocational school, where I could have learned accounting, instead of high school, where I have learned Latin, and Maths. My grades have always been very high, and since I can remember, I have always enjoyed studying, but the surrounding circumstances—what I have now learned somewhat pretentious people call “social capital”—scarce to the point that my academic achievements could really only be appreciated as proof of a work ethic better suited for the workforce, the one my family and I belong to: people who works with their hands.
+
+<figure class="wrap">
+  <img src="https://substackcdn.com/image/fetch/$s_!PUmH!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7d205697-8b6a-46d4-83db-540d6450bb68_1024x1024.png" alt="I matriculated" />
+</figure>
 
 To this day, I am nothing but grateful for all the well-meaning advice collected along the way, and perhaps even for those suggestions filled with self-interest and no true compassion—in the end, I did not go for vocational school and later did enroll in an Engineering School instead of becoming a baker or a chef-de-salle.
 For many different reasons, I feel I did put on my family’s shoulders a rather unfair load: telling the first-generation graduate who just really wanted to make something of his life what to do must have not been easy. More than that, I am rather ashamed to say in hindsight I did constantly act without a plan. After all, what plan could take one from working as a waiter to doing a PhD at Oxford? The point I am trying to make is my family did go through me moving around Italy and Europe, for jobs they perhaps never fully understood (I remember that when I started at Bain, no-one really knew what that place was). That is to say, my family saw me cluelessly travel the world, last-minute cancelling holidays for obscure conference deadlines, and immersing myself in work more than I perhaps should have, and not once I was able to provide them with the grand vision that could have explained it all, nor in all honesty I believe they would have understood my plan even if I had one.
