@@ -55,8 +55,8 @@ export default {
         },
       },
       fontFamily: {
-        sans: ['"Latin Modern Sans"', '"Computer Modern Sans"', 'sans-serif'],
-        mono: ['"CMU Typewriter Text"', '"Courier New"', 'monospace'],
+        sans: ['"Computer Modern Sans"', '"CMU Sans Serif"', 'sans-serif'],
+        mono: ['"Computer Modern Typewriter"', '"Courier New"', 'monospace'],
       },
       borderRadius: {
         lg: "var(--radius)",
