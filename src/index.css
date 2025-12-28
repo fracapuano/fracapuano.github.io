@@ -1,9 +1,10 @@
+/* Computer Modern (LaTeX) fonts from CDN */
+@import url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Computer Modern (LaTeX) fonts from CDN */
-@import url('https://cdn.jsdelivr.net/gh/dreampulse/computer-modern-web-font@master/fonts.css');
 @layer base {
   :root {
     /* Academic color palette - clean and minimal */

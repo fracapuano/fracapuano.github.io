@@ -1,6 +1,6 @@
 interface NewsItemProps {
   date: string;
-  content: React.ReactNode;
+  content: string;
 }
 
 const NewsItem = ({ date, content }: NewsItemProps) => {
@@ -9,7 +9,10 @@ const NewsItem = ({ date, content }: NewsItemProps) => {
       <span className="text-muted-foreground text-sm shrink-0 w-24 md:w-28">
         {date}
       </span>
-      <div className="text-[0.95rem]">{content}</div>
+      <div 
+        className="text-[0.95rem] [&>a]:text-link [&>a]:hover:text-link-hover [&>a]:underline"
+        dangerouslySetInnerHTML={{ __html: content }}
+      />
     </div>
   );
 };

@@ -24,7 +24,7 @@ const Index = () => {
             <img 
               src={profileImage} 
               alt="Francesco Capuano" 
-              className="w-32 h-40 object-cover border border-border"
+              className="w-48 h-60 object-cover border border-border"
             />
           </div>
           
@@ -32,26 +32,32 @@ const Index = () => {
           <div className="flex-1">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Francesco Capuano</h1>
             <p className="text-muted-foreground mb-4">
-              DPhil Student in Applied AI<br />
+              PhD Student in Applied AI<br />
               University of Oxford · <a href="https://ori.ox.ac.uk/labs/a2i/" target="_blank" rel="noopener noreferrer">A2I</a> & <a href="https://foersterlab.com/" target="_blank" rel="noopener noreferrer">FLAIR</a> Labs
             </p>
             <p className="mb-4 leading-relaxed">
-              Ciao 👋 Francesco here :) I deal with Deep Learning, and I am particularly interested in Robot Learning. 
-              I am a first-year DPhil student at Oxford working on enabling complex behavior in robots 🤖
+              Ciao 👋 Francesco here :) I deal with <strong>Deep Learning</strong>, with a particular interest in <strong>Robot Learning</strong> and <strong>Deep Reinforcement Learning</strong>.
             </p>
             <p className="mb-4 leading-relaxed">
-              I am supervised by <a href="https://ori.ox.ac.uk/people/ingmar-posner/" target="_blank" rel="noopener noreferrer">Ingmar Posner</a> and <a href="https://www.jakobfoerster.com/" target="_blank" rel="noopener noreferrer">Jakob Foerster</a>.
+              Born and raised in the suburbs of Rome, Italy 🇮🇹 I would have never thought I'd say this one day, but I like:
+              (1) Research, (2) <a href="https://x.com/_fracapuano/status/1517495613788721155/photo/1" target="_blank" rel="noopener noreferrer">Reinforcement Learning</a>, 
+              (3) <a href="https://open.spotify.com/album/5xQz73Q2PPi3xeoLrg1uce?si=J_T92eMcTASY3HJ0c2Zhsw" target="_blank" rel="noopener noreferrer">Blues</a>, 
+              (4) <Link to="/blog/bjj">BJJ</Link>, and 
+              (5) <Link to="/blog/two-years-of-travels">travelling</Link> (usually in this order).
+            </p>
+            <p className="mb-4 leading-relaxed">
+              I am currently working towards my PhD ("DPhil") at the University of Oxford, where I am supervised by <a href="https://eng.ox.ac.uk/people/ingmar-posner" target="_blank" rel="noopener noreferrer">Ingmar Posner</a> at <a href="https://ori.ox.ac.uk/labs/a2i" target="_blank" rel="noopener noreferrer">A2I</a> and <a href="https://www.jakobfoerster.com/" target="_blank" rel="noopener noreferrer">Jakob Foerster</a> at <a href="https://foersterlab.com/" target="_blank" rel="noopener noreferrer">FLAIR</a>.
             </p>
             <p className="text-sm text-muted-foreground">
               <a href="mailto:capuano@robots.ox.ac.uk">capuano@robots.ox.ac.uk</a>
               {" · "}
               <a href="https://github.com/fracapuano" target="_blank" rel="noopener noreferrer">GitHub</a>
               {" · "}
-              <a href="https://scholar.google.it/citations?user=2lXGNlkAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+              <a href="https://scholar.google.com/citations?hl=fi&user=E6WpTrUAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
               {" · "}
-              <a href="https://www.linkedin.com/in/fracapuano/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              <a href="https://www.linkedin.com/in/fracapuano" target="_blank" rel="noopener noreferrer">LinkedIn</a>
               {" · "}
-              <a href="https://x.com/fra__capuano" target="_blank" rel="noopener noreferrer">X</a>
+              <a href="https://x.com/_fracapuano" target="_blank" rel="noopener noreferrer">X</a>
             </p>
           </div>
         </div>

@@ -28,7 +28,7 @@ const Layout = ({ children }: LayoutProps) => {
               to="/" 
               className="text-lg font-bold text-foreground no-underline hover:no-underline"
             >
-              Your Name
+              Francesco Capuano
             </Link>
             
             <ul className="flex items-center gap-6 text-[0.95rem]">
@@ -59,7 +59,7 @@ const Layout = ({ children }: LayoutProps) => {
       {/* Footer */}
       <footer className="border-t border-border mt-auto">
         <div className="container py-6 text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} Your Name. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Francesco Capuano. All rights reserved.</p>
         </div>
       </footer>
     </div>
