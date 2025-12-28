@@ -29,6 +29,7 @@ const Publications = () => {
               venue={pub.venue}
               year={pub.year}
               links={pub.links}
+              award={pub.award}
             />
           ))}
         </Section>

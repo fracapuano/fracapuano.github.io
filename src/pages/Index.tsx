@@ -6,6 +6,7 @@ import NewsItem from "@/components/NewsItem";
 import PublicationItem from "@/components/PublicationItem";
 import { newsData } from "@/data/news";
 import { publicationsData } from "@/data/publications";
+import profileImage from "@/assets/profile.jpeg";
 
 const INITIAL_NEWS_COUNT = 5;
 
@@ -20,30 +21,37 @@ const Index = () => {
         <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
           {/* Profile Photo */}
           <div className="shrink-0">
-            <div className="w-32 h-40 bg-muted border border-border flex items-center justify-center text-muted-foreground text-xs text-center p-2">
-              Your photo here
-            </div>
+            <img 
+              src={profileImage} 
+              alt="Francesco Capuano" 
+              className="w-32 h-40 object-cover border border-border"
+            />
           </div>
           
           {/* Bio */}
           <div className="flex-1">
-            <h1 className="text-2xl md:text-3xl font-bold mb-2">Your Name</h1>
+            <h1 className="text-2xl md:text-3xl font-bold mb-2">Francesco Capuano</h1>
             <p className="text-muted-foreground mb-4">
-              DPhil Student in Machine Learning<br />
-              University of Oxford
+              DPhil Student in Applied AI<br />
+              University of Oxford · <a href="https://ori.ox.ac.uk/labs/a2i/" target="_blank" rel="noopener noreferrer">A2I</a> & <a href="https://foersterlab.com/" target="_blank" rel="noopener noreferrer">FLAIR</a> Labs
             </p>
             <p className="mb-4 leading-relaxed">
-              I am a doctoral student at Oxford, working on geometric deep learning 
-              and generative models for scientific applications. My research focuses 
-              on developing equivariant neural networks for molecular modeling and 
-              drug discovery.
+              Ciao 👋 Francesco here :) I deal with Deep Learning, and I am particularly interested in Robot Learning. 
+              I am a first-year DPhil student at Oxford working on enabling complex behavior in robots 🤖
+            </p>
+            <p className="mb-4 leading-relaxed">
+              I am supervised by <a href="https://ori.ox.ac.uk/people/ingmar-posner/" target="_blank" rel="noopener noreferrer">Ingmar Posner</a> and <a href="https://www.jakobfoerster.com/" target="_blank" rel="noopener noreferrer">Jakob Foerster</a>.
             </p>
             <p className="text-sm text-muted-foreground">
-              <a href="mailto:your.email@ox.ac.uk">your.email@ox.ac.uk</a>
+              <a href="mailto:capuano@robots.ox.ac.uk">capuano@robots.ox.ac.uk</a>
               {" · "}
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+              <a href="https://github.com/fracapuano" target="_blank" rel="noopener noreferrer">GitHub</a>
               {" · "}
-              <a href="https://scholar.google.com" target="_blank" rel="noopener noreferrer">Scholar</a>
+              <a href="https://scholar.google.it/citations?user=2lXGNlkAAAAJ" target="_blank" rel="noopener noreferrer">Scholar</a>
+              {" · "}
+              <a href="https://www.linkedin.com/in/fracapuano/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+              {" · "}
+              <a href="https://x.com/fra__capuano" target="_blank" rel="noopener noreferrer">X</a>
             </p>
           </div>
         </div>
@@ -77,6 +85,7 @@ const Index = () => {
               venue={pub.venue}
               year={pub.year}
               links={pub.links}
+              award={pub.award}
             />
           ))}
         </div>
