@@ -26,7 +26,7 @@ const Layout = ({ children }: LayoutProps) => {
           <nav className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <Link 
               to="/" 
-              className="text-lg font-bold text-foreground no-underline hover:no-underline"
+              className="text-[22px] font-bold text-foreground no-underline hover:no-underline"
             >
               Francesco Capuano
             </Link>
