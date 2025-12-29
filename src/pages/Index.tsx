@@ -35,7 +35,8 @@ const Index = () => {
               PhD Candidate, University of Oxford (<a href="https://ori.ox.ac.uk/labs/a2i/" target="_blank" rel="noopener noreferrer">A2I</a> & <a href="https://foersterlab.com/" target="_blank" rel="noopener noreferrer">FLAIR</a>) <br />
             </p>
             <p className="mb-4 leading-relaxed">
-              <i> Ciao </i>, Francesco here :) I am a DPhil (Oxbridge jargon for "PhD") candidate at the University of Oxford, supervised by <a href="https://eng.ox.ac.uk/people/ingmar-posner" target="_blank" rel="noopener noreferrer">Ingmar Posner</a> and <a href="https://www.jakobfoerster.com/" target="_blank" rel="noopener noreferrer">Jakob Foerster</a>.
+              <i> Ciao</i>, Francesco here :) I am a "DPhil" (Oxbridge jargon for PhD) candidate at the University of Oxford, supervised by <a href="https://eng.ox.ac.uk/people/ingmar-posner" target="_blank" rel="noopener noreferrer">Ingmar Posner</a> and <a href="https://www.jakobfoerster.com/" target="_blank" rel="noopener noreferrer">Jakob Foerster</a>.
+              I am interested in developing and using interactive World Models (WM) suited for autonomous (embodied) agency.
             </p>
             <p className="mb-4 leading-relaxed">
               I like chatting about (1) Research, (2) <a href="https://x.com/_fracapuano/status/1517495613788721155/photo/1" target="_blank" rel="noopener noreferrer">Reinforcement Learning</a>, 
