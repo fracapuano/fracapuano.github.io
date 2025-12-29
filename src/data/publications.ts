@@ -46,7 +46,7 @@ export const publicationsData: Publication[] = [
     id: "4",
     title: "Sim-is-more: Randomizing HW-NAS with Synthetic Devices",
     authors: "Francesco Capuano*, Gabriele Tiboni, Niccolò Cavagnero, Giuseppe Averta (*Corresponding author)",
-    venue: "AutoML Conference 2025 (Under Review)",
+    venue: "Preprint (Rejected AutoML 2025)",
     year: "2025",
     links: [
       { label: "PDF", href: "https://arxiv.org/pdf/2504.00663" },
