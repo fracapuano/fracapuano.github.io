@@ -24,7 +24,7 @@ WMs hold the premise of endowing autonomous systems with reactive forms of intel
 *Beyond simulation*, WMs could be used in decision-making leveraging their inherently dynamics-aware representations to estimate normative signals, moving beyond descriptive transition modeling toward the implicit derivation of complex reward functions, using WMs as the natural backbone for learning reward models in highly dynamical settings and long-horizon problems. In turn, these learned reward models could facilitate the emergence of intelligent behaviors in complex, unlabeled environments where explicit external supervision is unavailable or prohibitively expensive to define.
 
 
-## Project Proposals
+## Project proposals
 Progress toward my long-term goal of building more capable autonomous agents can be made pursuing (1) better WMs to be used (2) beyond simulation.
 
 ### (Better) World models...
