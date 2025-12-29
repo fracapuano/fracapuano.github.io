@@ -8,6 +8,7 @@ import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import Layout from "@/components/Layout";
 import { blogPostsData } from "@/data/blogPosts";
 import "katex/dist/katex.min.css";
+import { cn } from "@/lib/utils";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -48,6 +49,32 @@ const BlogPost = () => {
                 <blockquote className="border-l-2 border-muted-foreground/30 pl-4 italic text-muted-foreground my-6">
                   {children}
                 </blockquote>
+              ),
+              figure: ({ className, children, ...props }) => {
+                const isLeft = className?.includes('wrap-left');
+                return (
+                  <figure 
+                    className={cn(
+                      "mb-4 w-full md:w-auto md:max-w-[45%]",
+                      isLeft ? "md:float-left md:mr-6" : "md:float-right md:ml-6",
+                      className
+                    )} 
+                    {...props}
+                  >
+                    {children}
+                  </figure>
+                );
+              },
+              figcaption: ({ children }) => (
+                <figcaption 
+                  className="text-center text-[16px] text-[#1f1f1f] mt-2"
+                  style={{ 
+                    backgroundClip: 'unset',
+                    WebkitBackgroundClip: 'unset' 
+                  }}
+                >
+                  {children}
+                </figcaption>
               ),
               a: ({ href, children }) => (
                 <a 
