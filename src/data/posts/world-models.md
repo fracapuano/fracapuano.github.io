@@ -23,7 +23,7 @@ WMs hold the premise of endowing autonomous systems with reactive forms of intel
 
 *Beyond simulation*, WMs could be used in decision-making leveraging their inherently dynamics-aware representations to estimate normative signals, moving beyond descriptive transition modeling toward the implicit derivation of complex reward functions, using WMs as the natural backbone for learning reward models in highly dynamical settings and long-horizon problems. In turn, these learned reward models could facilitate the emergence of intelligent behaviors in complex, unlabeled environments where explicit external supervision is unavailable or prohibitively expensive to define.
 
-
+<!--
 ## Project proposals
 Progress toward my long-term goal of building more capable autonomous agents can be made pursuing (1) better WMs to be used (2) beyond simulation.
 
@@ -33,7 +33,7 @@ Progress toward my long-term goal of building more capable autonomous agents can
 
 ### ...for decision making
 * **Generalized action spaces**: Developing generalized agents requires reconciling disparate control interfaces. While latent-space projections enable cross-modality inputs, a fundamental challenge lies in aligning action spaces based on the resulting observed dynamics rather than on raw control signals. Bridging heterogeneous kinematics—such as different games environments, or even differing robot morphologies—through a *generalized action space* would enable the transfer of behaviors between otherwise disconnected environments. In turn, this could be useful in improving few-shot transfer of specialized policies *across* different worlds.
-* **Dynamics-based reward models**: Manual reward specification remains a major bottleneck to scaling autonomous agency, particularly in high-dimensional, unlabeled environments and in tasks involving complex, long-horizon objectives. The self-supervised representations learned by WMs encode rich latent structures that can be exploited to infer normative signals directly from environmental dynamics. By treating rewards as functionals of state-space transitions rather than as externally engineered scalars, goal-directed behaviors and even adaptable foundational behavior models [[Touati & Ollivier (2021)](#touatiLearningOneRepresentation2021); [Sikchi et al. (2025)](#sikchiFastAdaptationBehavioral2025)] can emerge as a consequence of optimal agency, grounded in a deeper understanding of the environment's underlying dynamics.
+* **Dynamics-based reward models**: Manual reward specification remains a major bottleneck to scaling autonomous agency, particularly in high-dimensional, unlabeled environments and in tasks involving complex, long-horizon objectives. The self-supervised representations learned by WMs encode rich latent structures that can be exploited to infer normative signals directly from environmental dynamics. By treating rewards as functionals of state-space transitions rather than as externally engineered scalars, goal-directed behaviors and even adaptable foundational behavior models [[Touati & Ollivier (2021)](#touatiLearningOneRepresentation2021); [Sikchi et al. (2025)](#sikchiFastAdaptationBehavioral2025)] can emerge as a consequence of optimal agency, grounded in a deeper understanding of the environment's underlying dynamics. -->
 
 ### Citation
 
