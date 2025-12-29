@@ -166,6 +166,40 @@
   blockquote {
     @apply border-l-2 border-muted-foreground/30 pl-4 italic text-muted-foreground my-6;
   }
+
+  /* Image wrapping */
+  figure.wrap {
+    float: right;
+    margin: 0 0 1rem 1.5rem;
+    max-width: 45%;
+    width: auto;
+  }
+  
+  @media (max-width: 768px) {
+    figure.wrap {
+      float: none;
+      margin: 1.5rem auto;
+      max-width: 100%;
+    }
+  }
+
+  figure.wrap img {
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 0.5rem;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  figure.wrap figcaption {
+    font-size: 0.85rem;
+    color: hsl(var(--muted-foreground));
+    text-align: center;
+    font-style: italic;
+    line-height: 1.4;
+  }
 }
 
 /* KaTeX display math centering */
