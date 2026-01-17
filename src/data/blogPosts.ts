@@ -2,7 +2,7 @@ import optimizingNns from './posts/optimizing-nns.md?raw';
 import privilege from './posts/privilege-sounds-like-you-work-too-much.md?raw';
 import oxfordThankYou from './posts/oxford-thank-you.md?raw';
 import worldModels1 from './posts/world-models.md?raw';
-import successRates from './posts/success-rates.md?raw';
+// import successRates from './posts/success-rates.md?raw';
 import nonno from './posts/nonno.md?raw';
 
 export interface BlogPost {
@@ -46,7 +46,7 @@ export const blogPostsData: BlogPost[] = [
     date: "December 29, 2025",
     excerpt: "I am doubling down on (interactive, compositional) world models for my research, and have used the holidays to put together a short draft of how I have been thinking about world models lately.",
     content: worldModels1
-},
+  },
   {
     id: "5",
     slug: "my-grandpa",
@@ -55,12 +55,12 @@ export const blogPostsData: BlogPost[] = [
     excerpt: "My grandfather, Oscar, passed away on January 12, 2026. I remember him as a good, firm and great man. He was a key figure in my life, and taught me many of the lessons I now abide by.",
     content: nonno
   },
-  {
-    id: "6",
-    slug: "success-rates",
-    title: "Do you actually understand your success rates?",
-    date: "January 15, 2026",
-    excerpt: "Stop reporting the standard deviation around the success rate! In the best case scenario, it is just an expensive way of measuring uncertainty; in the worst, it is a meaningless measure of spread.",
-    content: successRates
-  }
+  // {
+  //   id: "6",
+  //   slug: "success-rates",
+  //   title: "Do you actually understand your success rates?",
+  //   date: "January 15, 2026",
+  //   excerpt: "Stop reporting the standard deviation around the success rate! In the best case scenario, it is just an expensive way of measuring uncertainty; in the worst, it is a meaningless measure of spread.",
+  //   content: successRates
+  // }
 ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
