@@ -1,19 +1,26 @@
-> TLDR: Stop reporting the standard deviation around the success rate! In the best case scenario, it is just an expensive way of measuring uncertainty; in the worst, it is a meaningless measure of spread. Use Wilson score intervals instead for a cheap, principled measure of uncertainty.
+> TLDR: Stop reporting the standard deviation around your success rate! In the best case scenario, it is just an expensive way of measuring uncertainty; in the worst, it is a meaningless measure of spread. Use Wilson score intervals instead for a cheap, principled measure of uncertainty.
 
 ## Introduction
 
-In the robot learning community, the **Success Rate**  on arbitrary tasks is the key metric for both researchers and practitioners.
-Regardless of the sophistication of one particular technique, if it does not attain the desired goal---slotting batteries into their compartment, tying a not, or moving a cube around---there is little justification to investigating it further.
-The Success Rate $p$ for a given policy on a given task is thus the primary metric that is used to climb leaderboards and evaluation benchmarks, compare multiple versions of the same algorithm or entirely different algorithms, and even claim state-of-the-art performance.
-In practice, the success rate is measured by running an evaluation protocol for a finite (typically small) number of times, $n \simeq 10$, count the successful rollouts and then report the fraction of them that is successful, $p \approx \tfrac{n^+}{n}$, with $n^+$ being the number of succesful ($+$) rollouts.
+In the robot learning community, the **success rate (sr) on arbitrary tasks is *the* key metric**.
+Seldom a single metric cuts it for both researchers and practitioners, but sr's do---we're all ultimately interested in nothing but making sure our robots work, and success rates are the single measure of precisely this.
+That is to say that, almost regardless of the sophistication of one particular technique (be it single-task RL, IL, generalist policies, etc.), if a robot does not attain its desired goal (e.g., slotting batteries into their compartment, tying a not, or moving an object around a scene) there typically is limited interested in investigating it further.
+Robotics is inherently outcome-oriented, and in a very clear way: either things work, or they don't---personally, I find this beautiful.
+In practice, the success rate $p$ of a given policy is measured by repeatedly running the same evaluation protocol for a finite (typically, small) number of times (often referred to as *evaluation rollouts*) $n \simeq 10$, classifying each rollout as either succesful or not, to then count the total number of successful rollouts and then report the fraction of them that is successful, $p = \tfrac{n^+}{n}$, with $n^+$ being the number of succesful ($+$) rollouts.
 
-While the success rate is important in itself, measures of its spread are also important. Ideally, we'd want policies that succeed with high probability an overwhelming majority of the time. For some higher risk applications, for instance, one might even be willing to trade-off some percentage of success for more robustness. That is, a reliable 85% success rate might be preferrable over a less reliable 90%.
+While the success rate $ p $ is important by itself (i.e., in its "point estimate", for those who have done some statistics), measures of its spread are also important. 
+That is to say that a robot with a high success rate only a few times typically falls short of the practical expectations the community has for autonomous policies.
+Ideally, we'd want policies that succeed with high probability an overwhelming majority of the time. 
+This goes as far as to say that, for some higher risk applications, one might even be willing to trade-off successes for reliability---a sound, reliable $p_1 = 85\%$  might be preferrable over a less reliable $p_2 = 90\%$.
 
-Mathematically, this observation can be quantified looking at measured of spread of the average success rate reported.
-If we naively assume that the success rate over $n$ trials is distributed normally, then we could run $k$ evaluations---i.e., $k \cdot n$ rollouts---and report the average success rate $\mu_p$ alongside the measured standard deviation $\sigma_p$. 
-All in all, modeling the success rate distribution with a Gaussian offers benefits including the fact that we expect the entropy of the success rate distribution to be low---so that the distribution is concentrated around a given value---and the usual mathematical amenability of the normal distribution.
+Mathematically, this observation can be quantified looking at measures of spread of the average success rate reported.
+If we assume the success rate over $n$ trials to be distributed normally (spoiler: most things are), then one could run $k$ evaluations---i.e., $k \cdot n$ individual rollouts---and report the average success rate $\mu_p$ alongside the measured standard deviation $\sigma_p$.
+If (1) the policy had no stochasticity whatsoever at runtime and (2) the environment was fully observable and entirely stationary, there would be no spread around the reported success rate, i.e. $\mu_p \equiv p$ and $\sigma_p = 0$.
+All in all, modeling the success rate distribution with a Gaussian offers several benefits, including the fact that we expect the entropy of the success rate distribution to be low---so that the distribution is concentrated around a given value---and the usual mathematical amenability of the normal distribution.
+
 However, assuming $p \sim \mathcal N(\mu_p, \sigma_p^2)$ poses computational and interpretability challenges.
-For starters, one needs a large number of rollouts to build such normal approximation.
+For starters, one needs a prohibitive number of rollouts to build such normal approximation.
+Notice that prohibitive is not necessarily "large": running evaluations in the real-world or with high-fidelity physics simulators, often one may need up to several minutes
 Doing robot learning research in the real world means a $k$-fold increase in the time to run a single evaluation protocol, with $k$-times the resets, $k$-times the strain on the physical robot and experimental setups, etc.
 Further, from the point of view of interpretability, a Normal distribution is inherently suboptimal as $\text{supp}(\mathcal N) \equiv \mathbb R$, meaning the result might as well look like $\mu_p - \sigma_p < 0$ or $\mu_p + \sigma_p > 1$. 
 Put it plainly, how does one interpret having a -10% or 104% success rate?
