@@ -58,7 +58,7 @@ export const blogPostsData: BlogPost[] = [
   {
     id: "6",
     slug: "success-rates",
-    title: "Do you actually understand your success rates?",
+    title: "A primer on measuring the uncertainty of success rates",
     date: "March 14, 2026",
     excerpt: "Stop reporting the standard deviation around the success rate! In the best case scenario, it is just an expensive way of measuring uncertainty; in the worst, it is a meaningless measure of spread.",
     content: successRates
