@@ -1,144 +1,144 @@
-> TLDR: Stop reporting the standard deviation around your success rate! In the best case scenario, it is just an expensive way of measuring uncertainty; in the worst, it is a meaningless measure of spread. Use Wilson score intervals instead for a cheap, principled measure of uncertainty.
+> TLDR: Stop reporting the standard deviation around your success rate! In the best case scenario, it is just an expensive way of measuring uncertainty; in the worst, it is a meaningless measure of spread. Use Wilson score intervals instead for a cheap, principled measure of uncertainty around your success rates.
 
-## Introduction
+## Summary
 
-In the robot learning community, the **success rate (sr) on arbitrary tasks is *the* key metric**.
-Seldom a single metric cuts it for both researchers and practitioners, but sr's do---we're all ultimately interested in nothing but making sure our robots work, and success rates are the single measure of precisely this.
-That is to say that, almost regardless of the sophistication of one particular technique (be it single-task RL, IL, generalist policies, etc.), if a robot does not attain its desired goal (e.g., slotting batteries into their compartment, tying a not, or moving an object around a scene) there typically is limited interested in investigating it further.
-Robotics is inherently outcome-oriented, and in a very clear way: either things work, or they don't---personally, I find this beautiful.
-In practice, the success rate $p$ of a given policy is measured by repeatedly running the same evaluation protocol for a finite (typically, small) number of times (often referred to as *evaluation rollouts*) $n \simeq 10$, classifying each rollout as either succesful or not, to then count the total number of successful rollouts and then report the fraction of them that is successful, $p = \tfrac{n^+}{n}$, with $n^+$ being the number of succesful ($+$) rollouts.
+In robot learning, the **success rate is often *the* metric**.
+This is one of the few cases in machine learning where the central quantity of interest is almost offensively concrete: either the robot succeeds at slotting a battery in or it doesn't; either the gripper lifts the object or it doesn't; the drone either reaches its target, or it crashes on its way there.
+No middle ground, and no compromises, and I personally find this beautiful: robotics is so stubbornly outcome-oriented!
 
-While the success rate $ p $ is important by itself (i.e., in its "point estimate", for those who have done some statistics), measures of its spread are also important. 
-That is to say that a robot with a high success rate only a few times typically falls short of the practical expectations the community has for autonomous policies.
-Ideally, we'd want policies that succeed with high probability an overwhelming majority of the time. 
-This goes as far as to say that, for some higher risk applications, one might even be willing to trade-off successes for reliability---a sound, reliable $p_1 = 85\%$  might be preferrable over a less reliable $p_2 = 90\%$.
+To start from the absolute basics, measuring the success rate of a given policy performing a given task requires defining an evaluation protocol, and then running a finite (typically small) number of evaluation rollouts $n$, recording whether each rollout was successful.
+If $k$ out of $n$ rollouts succeed, one reports the empirical success rate $p = \frac{k}{n}.$
 
-Mathematically, this observation can be quantified looking at measures of spread of the average success rate reported.
-If we assume the success rate over $n$ trials to be distributed normally (spoiler: most things are), then one could run $k$ evaluations---i.e., $k \cdot n$ individual rollouts---and report the average success rate $\mu_p$ alongside the measured standard deviation $\sigma_p$.
-If (1) the policy had no stochasticity whatsoever at runtime and (2) the environment was fully observable and entirely stationary, there would be no spread around the reported success rate, i.e. $\mu_p \equiv p$ and $\sigma_p = 0$.
-All in all, modeling the success rate distribution with a Gaussian offers several benefits, including the fact that we expect the entropy of the success rate distribution to be low---so that the distribution is concentrated around a given value---and the usual mathematical amenability of the normal distribution.
+The point estimate $p$ matters, of course, but it is not enough.
+A reported $p = 90\%$ obtained over $10$ rollouts is not the same scientific object as a reported $p = 90\%$ obtained over $100$ rollouts: the first is suggestive, while the second is substantially more informative, let alone on the reliability (or lack of) of the policy which resulted in said 90/100 successful runs.
+Therefore, quite reasonably, it is very common to try attaching some measure of spread or uncertainty to $p$, and while correct in spirit (statistical rigor always is!), this step is often enough where things can go very, very wrong.
 
-However, assuming $p \sim \mathcal N(\mu_p, \sigma_p^2)$ poses computational and interpretability challenges.
-For starters, one needs a prohibitive number of rollouts to build such normal approximation.
-Notice that prohibitive is not necessarily "large": running evaluations in the real-world or with high-fidelity physics simulators, often one may need up to several minutes
-Doing robot learning research in the real world means a $k$-fold increase in the time to run a single evaluation protocol, with $k$-times the resets, $k$-times the strain on the physical robot and experimental setups, etc.
-Further, from the point of view of interpretability, a Normal distribution is inherently suboptimal as $\text{supp}(\mathcal N) \equiv \mathbb R$, meaning the result might as well look like $\mu_p - \sigma_p < 0$ or $\mu_p + \sigma_p > 1$. 
-Put it plainly, how does one interpret having a -10% or 104% success rate?
+<img src="https://huggingface.co/datasets/fracapuano/blogs/resolve/main/uncertainty_with_evidence.png" alt="" style="max-width:100%;height:auto;display:block;margin:2em 0;" />
 
-In this blogpost, I want to argue in favour of a way of quantifying the uncertainty around the success rate that is (1) computationally efficient and (2) theoretically solid: Wilson Score intervals.
-I have gotten interested in this subject after reading [this tweet](https://x.com/kvablack/status/2001109700151316519?s=20) from Kevin Black (first author of $\pi_0$), and found myself realizing that pretending to be scientifically rigorous is almost as despicable as not being rigorous at all. Excuse my wittyness here, although this is still a blogpost about statistical rigor.
+Across robotics, it is rather common to see the success rate accompanied by a standard deviation, similarily to how spreads around point estimates are reported for other other evaluation metrics in machine learning, like the cumulative return.
+Unfortunately, such measure of spread is not only inefficient, but fundamentally wrong.
+This blogpost aims at clarifying this point regarding evaluating robot learning policies in a reliable, robust manner.
+It is mainly inspired by reading [this tweet](https://x.com/kvablack/status/2001109700151316519?s=20) from Kevin Black (the first author of pi0! Know your robot learning researchers).
 
+## Key takeaway
+This blogpost's claim is simple: **for evaluation success rates, the quantity that should usually be reported is a confidence interval for a binomial proportion, not a standard deviation.**
+[Wilson Score intervals](https://en.wikipedia.org/wiki/Binomial_proportion_confidence_interval#Wilson_score_interval) are a very good default for it.
+Skip the rest of this blogpost and use the following snippet if you are in a hurry for CoRL (note: I am, 😅), or stick around for a derivation of why Wilson Score intervals are important and why you should use them too.
 
-## 1. The Nature of the Metric
-To understand the error, we have to look at the distribution. In standard regression or reinforcement learning tasks (like MuJoCo locomotion), our return is a continuous variable. If you run enough seeds, the Central Limit Theorem (CLT) kicks in, and the distribution of means approaches a Gaussian.
-
-Success in robotics, however, is binary.
-* A grasp is either successful or it isn't.
-* The drone reaches the target or it crashes.
-
-Each evaluation rollout is a **Bernoulli trial** ($X \in \{0, 1\}$) with an unknown parameter $p$, the true probability of success. When we run $N$ evaluation episodes, the total count of successes $k$ follows a **Binomial distribution**:
-
-$$k \sim \text{Binomial}(N, p)$$
-
-Our goal during evaluation is to estimate this underlying $p$ given our finite set of observations.
-
-## 2. The Evaluation Bottleneck
-If we had infinite compute, we could estimate the uncertainty of $p$ using a "brute force" Monte Carlo approach:
-1.  Run the full evaluation protocol (e.g., 50 episodes) to get a success rate $\hat{p}_1$.
-2.  Repeat this entire process $K$ times (where $K$ is large).
-3.  Compute the standard deviation of these $K$ success rates.
-
-In this hypothetical scenario, the distribution of $\hat{p}$ would indeed look Gaussian, and standard deviation would be a valid metric.
-
-**But in reality, evaluation is expensive.**
-In real-world robotics, we often have a budget of $N=10$ or $N=20$ trials *total*. We cannot afford to repeat the "experiment of experiments." We have one single sample of $N$ trials, and we need to derive our uncertainty from that alone.
-
-## 3. The Symmetry Trap
-When we report Mean $\pm$ Standard Deviation on a single set of binary trials, we are implicitly forcing a Gaussian distribution onto a Binomial problem. This fails for two critical reasons:
-
-### The Boundary Problem
-Success rates are strictly bounded between $[0, 1]$. A Gaussian distribution extends from $-\infty$ to $+\infty$. When your success rate is near the boundaries (e.g., 5% or 95%), a symmetric standard deviation will almost always cross into impossible territory (like -2% or 102%).
-
-### The Skewness Reality
-The Binomial distribution is only symmetric when $p=0.5$.
-* If $p=0.9$, the distribution is heavily **left-skewed** (tail points to 0).
-* If $p=0.1$, it is **right-skewed**.
-
-By reporting a single number ($\sigma$) for uncertainty, you are painting a symmetric picture of a highly asymmetric reality. You are underestimating the risk of failure (the long tail) and overestimating the potential for "super-success" (the hard ceiling).
-
-## 4. The Solution: Wilson Score Intervals
-If we assume the underlying mechanism is Binomial, we shouldn't use an interval derived for a Gaussian mean. We should use a **Binomial Confidence Interval**.
-
-While there are several options (like the ultra-conservative Clopper-Pearson), the **Wilson Score Interval** is widely regarded as the best balance of coverage and precision for $N$ ranges typical in robotics.
-
-### The Intuition
-The Wilson interval works by **inverting the hypothesis test**. Instead of asking "Given $\hat{p}$, where might the true $p$ be?", it effectively asks:
-> *"For which values of $p$ would our observed data be considered 'not surprising'?"*
-
-The math accounts for the fact that the **variance of a Binomial distribution changes with its mean**.
-$$\sigma^2 = p(1-p)$$
-As $p$ approaches 1, the variance naturally shrinks to 0. The Wilson formulation builds this changing variance directly into the interval.
-
-The result is an interval that is **asymmetric**:
-* If $\hat{p} = 0.95$, the interval might be $[0.85, 0.99]$.
-* It "pushes" against the ceiling of 1.0 but stretches down into the tail of 0.0.
-
-### Pure Python Implementation
-You don't need complex libraries to implement this. It is a closed-form solution that you can add to your evaluation scripts today.
-
-
+You do not need any scientific Python stack for this.
 ```python
 import math
+from statistics import NormalDist
 
-def wilson_score_interval(successes, total_trials, confidence=0.95):
-    """
-    Computes the Wilson Score Interval for a binomial proportion.
-    
-    Args:
-        successes: Number of successful rollouts
-        total_trials: Total number of rollouts
-        confidence: Desired confidence level (default 0.95)
-    
-    Returns:
-        (lower_bound, upper_bound)
-    """
-    if total_trials == 0: return 0.0, 0.0
-    
-    # 1. Get the z-score (1.96 for 95% confidence)
-    # Using hardcoded value for independence, or use scipy.stats.norm.ppf
-    z = 1.96
-    
-    # 2. Compute the components
+# *Don't* compute_gaussian_confidence_interval(success_rates, confidence=0.95) 
+# *Do* wilson_score_interval(successes, total_trials, confidence=0.95)
+
+def wilson_score_interval(successes: int, total_trials: int, confidence: float = 0.95):
+    if total_trials <= 0:
+        return 0.0, 0.0
+
     n = total_trials
     p_hat = successes / n
-    
-    denominator = 1 + (z**2) / n
-    center_adjusted = p_hat + (z**2) / (2 * n)
-    spread = z * math.sqrt((p_hat * (1 - p_hat) / n) + (z**2) / (4 * n**2))
-    
-    # 3. Calculate bounds
-    lower = (center_adjusted - spread) / denominator
-    upper = (center_adjusted + spread) / denominator
-    
-    # Clip to valid [0, 1] range (handles float precision issues)
+    z = NormalDist().inv_cdf(0.5 + confidence / 2.0)
+
+    denominator = 1.0 + (z**2) / n
+    center = p_hat + (z**2) / (2.0 * n)
+    radius = z * math.sqrt((p_hat * (1.0 - p_hat) / n) + (z**2) / (4.0 * n**2))
+
+    lower = (center - radius) / denominator
+    upper = (center + radius) / denominator
+
     return max(0.0, lower), min(1.0, upper)
 
-# Example Usage
-# You ran 10 trials, got 9 successes.
-low, high = wilson_score_interval(9, 10)
-print(f"Success Rate: 0.90")
-print(f"95% CI: [{low:.2f}, {high:.2f}]")
-# Output: [0.60, 0.98]
+successes = 9
+trials = 10
+
+low, high = wilson_score_interval(successes, trials)
+print(f"Success rate: {successes/trials}")
+print(f"95% Wilson CI: [{low:.2f}, {high:.2f}]")
 ```
+
+## Quantifying what quantity's uncertainty one wants to quantify
+..."quantity", just because I haven't used this word enough time in this section's title (alright, sorry for the joke).
+
+Let $X_i \in \{0, 1\}$ denote the outcome of rollout $i$, with $X_i = 1$ if the rollout succeeds and $X_i = 0$ otherwise.
+Under the usual simplifying assumption that evaluation episodes are conditionally independent given the same policy $\pi$ with weights $\theta$, and that the evaluation environment is stationary at test-time, we can model
+
+$$
+X_i \sim \operatorname{Bernoulli}(p),
+\qquad
+k = \sum_{i=1}^n X_i \sim \operatorname{Binomial}(n, p),
+$$
+
+where $p$ is the true, *unknown* probability that $\pi$ succeeds at its task.
+When estimating $p$ from experiments, there are multiple distinct sources of variability one needs to be aware of:
+
+1. The variability of individual rollout outcomes, namely $\operatorname{Var}(X_i) = p(1-p)$
+2. The variability of the estimator $p = \tfrac{1}{n}\sum_{i=1}^n X_i$, namely $\operatorname{Var}(p) = \tfrac{p(1-p)}{n}$.
+3. The variability across independently trained policies, e.g. different random seeds, datasets, checkpoints, or hyperparameter choices.
+
+When one evaluates a **single, fixed policy** $\pi$, it typically aims at answering: *given a finite number of rollouts $n$ with $k$ successes, how uncertain am I about the underlying success probability $p$?*
+At its core, this is a question about a binonial distribution (by definition!)---not exactly the best question to answer using a standard deviation!
+
+## Why standard deviation is often the wrong number
+Let start separating the two most immediate uses of standard deviation.
+I want to argue that while the first one is mostly unhelpful, the second is merely expensive, and risks being misleading.
+
+### (Wrong) Option 1: Collect everything, then quantify the uncertainty
+
+Let's start with the standard deviation **across** rollouts. 
+Suppose I run $n$ rollouts once and compute the standard deviation of the binary outcomes $X_1, \dots, X_n$.
+This quantity estimates the spread of **individual outcomes**, not the uncertainty on $p$.
+Under (1) the assumption that each rollout is i.i.d. $\operatorname{Bernoulli}(p)$, this spread is the square root of $\operatorname{Var}(X_i) = \hat p ( 1 - \hat p)$, with $\hat{p}$ estimated from rollouts.
+
+Notice a first problem: this quantity is completely independent by the amount of empirical evidence collected.
+In practice, both $\hat p = 9/10$ successes and $\hat p = 90/100$ result in the same uncertainty estimate!
+The reported point estimate is the same in both cases, but the second evaluation is obviously much more informative than the first.
+
+This alone should be enough to make one uncomfortable: the adoption of an uncertainty measure that is invariant with the amount of empirical evidence collected is rather difficult to justify.
+
+### (Wrong) Option 2: Batch and repeat evaluations
+
+Alternatively, one could re-run the entire evaluation protocol carried out to estimate $\hat p$ in the first place $t$-times, obtaining $\hat p_1, \dots, \hat{p}_t$, and then compute the standard deviation across these repeated estimates.
+Essentially, this would result in estimating uncertainty by running an experiment of experiments.
+Unfortunately, the resulting data requirements may prove prohibitive in robotics, as it is common for evaluations to take up to minutes, even in simulation.
+Running evaluation protocols in the real world requires resets, strains hardware, or depends on a human supervising the setup, further hindering just repeating the same evaluation protocol many times.
+
+
+<img src="https://huggingface.co/datasets/fracapuano/blogs/resolve/main/meta_experiments.png" alt="" style="max-width:100%;height:auto;display:block;margin:2em 0;" />
+
+
+Importantly, the Central Limit Theorem tells us that $\operatorname{Bernoulli}(n, p) \xrightarrow{n \to \infty} \mathcal N(np, np(1-p))$, with a rate of convergence that depends on the skewedness of $\operatorname{Bernoulli}(n, p)$: essentially, convergence to Gaussian is faster for $p \simeq 0.5$, and progressively slower for $p \to 0$ or $p \to 1$. Typically, one hopes that the success rate of a given policy is as close to 1 as possible, further hindering the possibility of fitting Gaussian distributions around the estimated $\hat p$.
+
+## A binomial object for a binomial distribution
+
+Once one accepts that the evaluation metric comes from Bernoulli trials, the right object to use to measure uncertainty becomes much more obvious: we should report an interval for the unknown binomial proportion $p$.
+
+There are several ways to do this.
+Some are too conservative for the small evaluation budgets common in robotics; some rely on normal approximations that behave badly near the edges. **Wilson score intervals** (see [here](https://www.econometrics.blog/post/the-wilson-confidence-interval-for-a-proportion/) for extra resources) are a very strong candidate as they are:
+
+* bounded in $[0,1]$ (great to measure the average rate of a Bernoulli trial!)
+* asymmetric (great for skewed $p$!)
+
+In particular, given a confidence level associated with a Gaussian quantile $z$ and an observed success rate $\hat p = k/n$, the Wilson interval can be obtained analytically as:
+
+$$
+\frac{\hat{p} + \frac{z^2}{2n}}{1 + \frac{z^2}{n}} \pm \frac{z}{1 + \frac{z^2}{n}} \sqrt{\frac{\hat{p}(1 - \hat{p})}{n} + \frac{z^2}{4n^2}}
+$$
+
+As stated before, this interval is always bound between 0 and 1, and can also be asymmetric, which matches the nature of the underlying (asymmetric) Binomial distribution modeled---great properties for a measure of spread around success rates!
+### Citation
+
+If you find this useful for your work, please consider citing it.
 
 <div id="capuanoWilsonScore2026">
 <pre>
-    @misc{capuanoWilsonScore2026,
-    title = {Sounder Robot Learning Evaluation with Wilson Score Intervals},
-    author = {Capuano, Francesco},
-    year = 2026,
-    month = {January},
-    url = {https://fracapuano.github.io/blog/}
-    }
+@misc{capuanoWilsonScore2026,
+  title = {A primer on measuring the uncertainty of success rates},
+  author = {Capuano, Francesco},
+  year = 2026,
+  month = {January},
+  url = {https://fracapuano.github.io/blog/success-rates}
+}
 </pre>
 </div>
