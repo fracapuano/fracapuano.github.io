@@ -15,7 +15,7 @@ Therefore, quite reasonably, it is very common to try attaching some measure of 
 
 <img src="https://huggingface.co/datasets/fracapuano/blogs/resolve/main/uncertainty_with_evidence.png" alt="" style="max-width:100%;height:auto;display:block;margin:2em 0;" />
 
-Across robotics, it is rather common to see the success rate accompanied by a standard deviation, similarily to how spreads around point estimates are reported for other other evaluation metrics in machine learning, like the cumulative return.
+Across robotics, it is rather common to see the success rate accompanied by a standard deviation, similarily to how spreads around point estimates are reported for other evaluation metrics in machine learning, like the cumulative return.
 Unfortunately, such measure of spread is not only inefficient, but fundamentally wrong.
 This blogpost aims at clarifying this point regarding evaluating robot learning policies in a reliable, robust manner.
 It is mainly inspired by reading [this tweet](https://x.com/kvablack/status/2001109700151316519?s=20) from Kevin Black (the first author of pi0! Know your robot learning researchers).
